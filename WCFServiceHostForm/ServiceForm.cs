@@ -11,7 +11,7 @@ using WCFService;
 using System.Threading;
 using System.IO;
 
-namespace WCFServiceHostForm
+namespace WCFServiceHostForm//WCFServiceHostForm
 {
     public partial class ServiceForm : Form
     {
