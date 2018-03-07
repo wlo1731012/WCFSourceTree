@@ -1,0 +1,5 @@
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WcfServiceLibrary1\bin\Debug\WcfServiceLibrary1.dll.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WcfServiceLibrary1\bin\Debug\WcfServiceLibrary1.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WcfServiceLibrary1\bin\Debug\WcfServiceLibrary1.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.pdb

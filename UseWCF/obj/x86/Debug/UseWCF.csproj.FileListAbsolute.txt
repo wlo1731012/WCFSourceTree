@@ -1,0 +1,68 @@
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.WCF1Form.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\UseWCF.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\UseWCF.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\obj\x86\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\obj\x86\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\obj\x86\Debug\UseWCF.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\obj\x86\Debug\UseWCF.WCF1Form.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\UseWCF\obj\x86\Debug\UseWCF.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\bin\Debug\UseWCF.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\obj\x86\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\obj\x86\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\obj\x86\Debug\UseWCF.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\obj\x86\Debug\UseWCF.WCF1Form.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\obj\x86\Debug\UseWCF.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\bin\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\bin\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\UseWCF\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\bin\Debug\UseWCF.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\obj\x86\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\obj\x86\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\bin\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\bin\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\obj\x86\Debug\UseWCF.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\obj\x86\Debug\UseWCF.WCF1Form.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\UseWCF\obj\x86\Debug\UseWCF.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\bin\Debug\UseWCF.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\obj\x86\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\obj\x86\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\bin\Debug\UseWCF.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\obj\x86\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\obj\x86\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\bin\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\bin\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\obj\x86\Debug\UseWCF.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\obj\x86\Debug\UseWCF.WCF1Form.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\UseWCF\obj\x86\Debug\UseWCF.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\bin\Debug\UseWCF.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\bin\Debug\UseWCF.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\obj\x86\Debug\UseWCF.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\obj\x86\Debug\UseWCF.WCF1Form.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\UseWCF\obj\x86\Debug\UseWCF.csproj.GenerateResource.Cache
