@@ -145,24 +145,27 @@ namespace UseWCF
             string filePath = OpenDialog();
             if (filePath != "")
             {
+                bool isChangeFileName = false;
+                long totalBytesRead = 0;
+                double currentProgress = 0;
+
                 WCFClient wcfClient = new WCFClient();
                 
                 ClientFile clientFile = new ClientFile();
                 clientFile.ClientName = txtUserName.Text;
-                clientFile.Buffer = new byte[100000];
+                clientFile.Buffer = new byte[300000];
 
                 string[] splitString = filePath.Split('\\');
                 FileInfo fileInfo = new FileInfo(filePath); // Get file Length
                 MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(filePath), splitString[splitString.Length - 1], fileInfo.Length);
-                bool isChangeFileName = false;
-                long totalBytesRead = 0;
-                double currentProgress = 0;
+                
                 
                 do
                 {
                     clientFile.BytesRead = sendFileInfo.Stream.Read(clientFile.Buffer, 0, clientFile.Buffer.Length);
                     clientFile.FileName = sendFileInfo.FileName;
                     clientFile.BufferSize = clientFile.Buffer.Length;
+                    clientFile.isFinsishFlag = false;
 
                     service.ReceiveFile(clientFile, isChangeFileName);
 
@@ -175,8 +178,12 @@ namespace UseWCF
                         currentProgress = 100;
 
                     pgbReadFile.Value = Convert.ToInt32(currentProgress);
-                    
-                } while (totalBytesRead != sendFileInfo.FileSize);//== buffer.Length
+                    if (currentProgress == 100)
+                    {
+                        clientFile.isFinsishFlag = true;
+                        service.ReceiveFile(clientFile, isChangeFileName);
+                    }
+                } while (currentProgress != 100);//== buffer.Length
 
                 rtbHistory.AppendText("Transport successful\n");
                 //service.ReceiveFile(clientFile, finishFlag);

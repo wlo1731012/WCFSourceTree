@@ -16,23 +16,26 @@ namespace WCFService
     public class Service1 : IService1
     {
         private List<string> _userList = new List<string>();
-        public static Dictionary<string, ICallBackServices> _dicHostSessionid = null;// Record client's session id and CallBack
-        public static Dictionary<string, string> _dicHostUserid = null;// Record client's user name and session id
-        public static bool _isNewUser = false;
-        public static bool _isSendMessage = false;
+        private string _filePath = "";
 
-        public static Person _sendMessenger;
-        public static string _receiveMessenger;
+        public static Dictionary<string, ICallBackServices> DicHostSessionid = new Dictionary<string,ICallBackServices>();// Record client's session id and CallBack
+        public static Dictionary<string, string> DicHostUserid = new Dictionary<string,string>();// Record client's user name and session id
+
+        public static bool isNewUser = false;
+        public static bool isSendMessage = false;
+
+        public static Person SendMessenger;
+        public static string ReceiveMessenger;
 
         public delegate void ListenerHandler_ReceiveFile(string clientName, string fileName, bool isChangeFileName);
         public static event ListenerHandler_ReceiveFile listenerHandler_ReceiveFile = null;
 
-        private string filePath;
+        public FileStream fileStream;
 
         public Service1()
         {
-            _dicHostSessionid = new Dictionary<string, ICallBackServices>();
-            _dicHostUserid = new Dictionary<string, string>();
+            DicHostSessionid = new Dictionary<string, ICallBackServices>();
+            DicHostUserid = new Dictionary<string, string>();
         }
         /// <summary>
         /// Register client's name and closing event
@@ -45,10 +48,10 @@ namespace WCFService
             string sessionid = OperationContext.Current.SessionId;
             OperationContext.Current.Channel.Closing += new EventHandler(Channel_Closing); // Regist client's closing event
 
-            _dicHostSessionid.Add(sessionid, client);//If type is seesion id, add it
-            _dicHostUserid.Add(userName, sessionid);
+            DicHostSessionid.Add(sessionid, client);//If type is seesion id, add it
+            DicHostUserid.Add(userName, sessionid);
 
-            _isNewUser = true;
+            isNewUser = true;
         }
 
         /// <summary>
@@ -58,14 +61,14 @@ namespace WCFService
         /// <param name="e"></param>
         void Channel_Closing(object sender, EventArgs e)
         {
-            if (_dicHostSessionid != null && _dicHostSessionid.Count > 0)
+            if (DicHostSessionid != null && DicHostSessionid.Count > 0)
             {
-                _isNewUser = true;
-                foreach (var dic in _dicHostUserid)
-                    if (_dicHostSessionid[dic.Value] == (ICallBackServices)sender)//Remove the client's data
+                isNewUser = true;
+                foreach (var dic in DicHostUserid)
+                    if (DicHostSessionid[dic.Value] == (ICallBackServices)sender)//Remove the client's data
                     {
-                        _dicHostSessionid.Remove(_dicHostUserid[dic.Key]);
-                        _dicHostUserid.Remove(dic.Key);
+                        DicHostSessionid.Remove(DicHostUserid[dic.Key]);
+                        DicHostUserid.Remove(dic.Key);
                         break;
                     }
             }
@@ -78,10 +81,10 @@ namespace WCFService
         /// <param name="specificClient">Send message to who</param>
         public void SendToOtherClients(Person person, string specificClient)
         {
-            _sendMessenger = person;
-            _receiveMessenger = specificClient;
+            SendMessenger = person;
+            ReceiveMessenger = specificClient;
 
-            _isSendMessage = true;
+            isSendMessage = true;
         }
         /// <summary>
         /// Get File data with type of list
@@ -178,30 +181,38 @@ namespace WCFService
 
         public void ReceiveFile(ClientFile clientFile, bool isChangeFileName)
         {
-            if (listenerHandler_ReceiveFile != null && isChangeFileName == false)
+            if (clientFile.isFinsishFlag == false)
             {
-                listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
-                filePath = "D:\\Folder2\\" + clientFile.ClientName + "_" + clientFile.FileName;
-                filePath = CheckFileName(filePath);
+                if (listenerHandler_ReceiveFile != null && isChangeFileName == false) // Check if this file is first time transport to Service then give it name
+                {
+                    listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
+                    _filePath = "D:\\Folder2\\" + clientFile.ClientName + "_" + clientFile.FileName;
+                    _filePath = CheckFileName(_filePath);
+
+                    fileStream = File.Open(_filePath, FileMode.Append);
+                }
+                fileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
             }
-            clientFile.ReceiveFileStream = File.Open(filePath, FileMode.Append);
-            clientFile.ReceiveFileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
-            clientFile.ReceiveFileStream.Close();
+            else
+            {
+                fileStream.Close();
+            }
         }
         private string CheckFileName(string filePath)
         {
             string[] splitPath = filePath.Split('.');
             string extensionName = "." + splitPath[splitPath.Length - 1];
+            string _filePath = filePath;
             int nameCount = 0;
             while (true)
             {
-                if (File.Exists(filePath) == true)
+                if (File.Exists(_filePath) == true)
                 {
                     nameCount++;
-                    filePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
+                    _filePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
                 }
                 else
-                    return filePath;
+                    return _filePath;
             }
         }
     }

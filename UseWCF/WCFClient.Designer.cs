@@ -110,7 +110,7 @@
             this.pgbReadFile.Size = new System.Drawing.Size(421, 23);
             this.pgbReadFile.TabIndex = 14;
             // 
-            // WCF1Form
+            // WCFClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -123,7 +123,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.btnChat);
-            this.Name = "WCF1Form";
+            this.Name = "WCFClient";
             this.Text = "Client1";
             this.ResumeLayout(false);
             this.PerformLayout();
