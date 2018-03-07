@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace UseWCF
 {
-    public partial class WCFClient : Form
+    public partial class WCFClient : Form//WCFClient
     {
         private string _userName;
         private int selectedFlag = 0;
