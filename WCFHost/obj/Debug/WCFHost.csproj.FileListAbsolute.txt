@@ -1,0 +1,42 @@
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFHost.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\obj\Debug\WCFHost.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFHost\obj\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\obj\Debug\WCFHost.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\新增資料夾\WCFHost\WCFHost\obj\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\obj\Debug\WCFHost.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost_\WCFHost\obj\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\obj\Debug\WCFHost.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案)\WCFHost\obj\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\bin\Debug\UseWCF2.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\bin\Debug\UseWCF2.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\obj\Debug\WCFHost.csprojResolveAssemblyReference.cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFHost\obj\Debug\WCFHost.pdb
