@@ -36,11 +36,12 @@
             this.lsbUserList = new System.Windows.Forms.ListBox();
             this.btnFile = new System.Windows.Forms.Button();
             this.pgbReadFile = new System.Windows.Forms.ProgressBar();
+            this.btnDownload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnChat
             // 
-            this.btnChat.Location = new System.Drawing.Point(385, 320);
+            this.btnChat.Location = new System.Drawing.Point(314, 320);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(74, 27);
             this.btnChat.TabIndex = 0;
@@ -70,7 +71,7 @@
             // 
             this.txtChat.Location = new System.Drawing.Point(118, 319);
             this.txtChat.Name = "txtChat";
-            this.txtChat.Size = new System.Drawing.Size(261, 22);
+            this.txtChat.Size = new System.Drawing.Size(190, 22);
             this.txtChat.TabIndex = 9;
             // 
             // btnLogin
@@ -95,13 +96,13 @@
             // 
             // btnFile
             // 
-            this.btnFile.Location = new System.Drawing.Point(465, 320);
+            this.btnFile.Location = new System.Drawing.Point(394, 320);
             this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(74, 27);
+            this.btnFile.Size = new System.Drawing.Size(66, 27);
             this.btnFile.TabIndex = 13;
-            this.btnFile.Text = "FILE";
+            this.btnFile.Text = "Upload";
             this.btnFile.UseVisualStyleBackColor = true;
-            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            this.btnFile.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // pgbReadFile
             // 
@@ -110,11 +111,22 @@
             this.pgbReadFile.Size = new System.Drawing.Size(421, 23);
             this.pgbReadFile.TabIndex = 14;
             // 
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(466, 319);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(73, 28);
+            this.btnDownload.TabIndex = 15;
+            this.btnDownload.Text = "Download";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
             // WCFClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 389);
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.pgbReadFile);
             this.Controls.Add(this.btnFile);
             this.Controls.Add(this.lsbUserList);
@@ -140,6 +152,7 @@
         private System.Windows.Forms.ListBox lsbUserList;
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.ProgressBar pgbReadFile;
+        private System.Windows.Forms.Button btnDownload;
     }
 }
 

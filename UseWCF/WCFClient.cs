@@ -140,7 +140,7 @@ namespace UseWCF
 
         }
 
-        private void btnFile_Click(object sender, EventArgs e)
+        private void btnUpload_Click(object sender, EventArgs e)
         {
             string filePath = OpenDialog();
             if (filePath != "")
@@ -237,6 +237,11 @@ namespace UseWCF
                 return dialog.FileName;
             else
                 return "";
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
