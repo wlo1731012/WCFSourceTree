@@ -17,10 +17,12 @@ namespace WCFServiceHostForm
     {
         public ServiceForm()
         {
-            InitializeComponent();//Test123
+            InitializeComponent();
         }
+        private static object InstObj = new object();
         private int selectedFlag = 0;
         private int selectedIndex = -1;
+        public Thread threadReceiveMessage;
         string filePath = "D:\\Folder2\\Client_";
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,29 +34,28 @@ namespace WCFServiceHostForm
 
             #region Thread Working
 
-            Thread threadReceiveMessage = new Thread(new ThreadStart(delegate   //Listen all clients chat content
+            threadReceiveMessage = new Thread(new ThreadStart(delegate   //Listen all clients chat content
             {
-                //lock (InstObj)//Lock for multiple
-                //{
-                
-                while (true)
+                lock (InstObj)//Lock for multiple
                 {
-                    if (Service1._isSendMessage == true) // Listen chat
+                    while (true)
                     {
-                        SendToOtherClient(Service1._sendMessenger, Service1._receiveMessenger);
-                    }
-                    else if (Service1._isNewUser == true) // Listen login
-                    {
-                        AddNewUser();
-                    }
-                    //else if (Service1._isReceiveFile == true)
-                    //{
-                    //    ReceiveFile(Service1._clientFile);
-                    //}
+                        if (Service1._isSendMessage == true) // Listen chat
+                        {
+                            SendToOtherClient(Service1._sendMessenger, Service1._receiveMessenger);
+                        }
+                        else if (Service1._isNewUser == true) // Listen login
+                        {
+                            AddNewUser();
+                        }
+                        //else if (Service1._isReceiveFile == true)
+                        //{
+                        //    ReceiveFile(Service1._clientFile);
+                        //}
 
-                    Thread.Sleep(10);
+                        Thread.Sleep(10);
+                    }
                 }
-                //}
             }));
             threadReceiveMessage.IsBackground = true;
             threadReceiveMessage.Start();
@@ -124,40 +125,19 @@ namespace WCFServiceHostForm
             Service1._isSendMessage = false; // Initialize
         }
 
-        private void ReceiveFile(ClientFile clientFile, bool isChangeFileName)
+        private void ReceiveFile(string clientName, string fileName, bool isChangeFileName)
         {
             if (isChangeFileName == false) // Only active once
             {
                 this.Invoke(new MethodInvoker(delegate
                 {
                     this.rtbHistory.SelectionColor = Color.Goldenrod;
-                    this.rtbHistory.AppendText(clientFile.ClientName + " transport a file \"" + clientFile.FileName + "\" to you.\n");
+                    this.rtbHistory.AppendText(clientName + " transport a file \"" + fileName + "\" to you.\n");
                     this.rtbHistory.SelectionColor = Color.White;
                 }));
-                filePath = "D:\\Folder2\\Client_" + clientFile.FileName;
-                filePath = CheckFilePath(filePath);
             }
-            
-            clientFile.ReceiveFileStream = File.Open(filePath, FileMode.Append);
-            clientFile.ReceiveFileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
-            clientFile.ReceiveFileStream.Close();
         }
-        private string CheckFilePath(string filePath)
-        {
-            int nameCount = 0;
-            string[] splitPath = filePath.Split('.');
-            while (true)
-            {
-                if (File.Exists(filePath) == true)
-                {
-                    nameCount++;
-                    filePath = splitPath[0] + "_" + nameCount.ToString() + "." + splitPath[1]; 
-                }
-                else
-                    break;
-            }
-            return filePath;
-        }
+        
         #region Toolbox Event
         private void btnBroadCast_Click(object sender, EventArgs e)
         {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="DsMDx5+NoOx6sFZTNiv7Bi9+wII=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="azWZgwWZtfUlBVhMKy+wjo5jwgs=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="netTcpBinding">
       <properties>
@@ -118,10 +118,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="netTcpBinding" contract="netTCPServiceReference.IService1" bindingType="netTcpBinding" address="net.tcp://10.201.41.88:8732//WCFHost/Service1/" bindingConfiguration="netTcpBinding">
+    <endpoint name="netTcpBinding" contract="netTCPServiceReference.IService1" bindingType="netTcpBinding" address="net.tcp://10.201.41.88:8732//WCFService/Service1/" bindingConfiguration="netTcpBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://10.201.41.88:8732//WCFHost/Service1/</serializedValue>
+          <serializedValue>net.tcp://10.201.41.88:8732//WCFService/Service1/</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

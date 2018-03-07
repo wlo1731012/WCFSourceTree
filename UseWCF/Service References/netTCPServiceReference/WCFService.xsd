@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChatContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" nillable="true" type="tns:Person" />
+  <xs:complexType name="ClientFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Buffer" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="BufferSize" type="xs:int" />
+      <xs:element minOccurs="0" name="BytesRead" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.IO" minOccurs="0" name="ReceiveFileStream" nillable="true" type="q1:FileStream" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientFile" nillable="true" type="tns:ClientFile" />
+</xs:schema>

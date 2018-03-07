@@ -105,7 +105,7 @@
     <None Include="Service References\netTCPServiceReference\System.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\netTCPServiceReference\WCFHost.xsd">
+    <None Include="Service References\netTCPServiceReference\WCFService.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
