@@ -64,3 +64,6 @@ D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.ServiceForm.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.Properties.Resources.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180227(可傳小檔案) - 複製\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFServiceHostForm.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.pdb

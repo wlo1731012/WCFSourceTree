@@ -17,7 +17,7 @@ namespace WCFServiceHostForm
     {
         public ServiceForm()
         {
-            InitializeComponent();
+            InitializeComponent();//Test123
         }
         private int selectedFlag = 0;
         private int selectedIndex = -1;
