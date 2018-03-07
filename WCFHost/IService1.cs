@@ -78,10 +78,10 @@ namespace WCFService
         [DataMember]
         public int BytesRead;
         [DataMember]
-        public int BufferSize;
+        public byte[] Buffer; // Tranported onformation once
         [DataMember]
-        public FileStream ReceiveFileStream;
+        public int BufferSize; // Size of tranported onformation once
         [DataMember]
-        public byte[] Buffer;
+        public bool isFinsishFlag;
     }
 }

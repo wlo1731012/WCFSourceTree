@@ -19,4 +19,3 @@ D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\ob
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\UseWCF.WCFClient.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.csproj.GenerateResource.Cache
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFHost.dll
