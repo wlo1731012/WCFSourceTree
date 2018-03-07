@@ -14,7 +14,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFHost" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFService" />
       <xsd:import />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.IO" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
@@ -149,9 +149,9 @@
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="netTcpBinding" binding="tns:netTcpBinding">
-      <soap12:address location="net.tcp://10.201.41.88:8732//WCFHost/Service1/" />
+      <soap12:address location="net.tcp://10.201.41.88:8732//WCFService/Service1/" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.201.41.88:8732//WCFHost/Service1/</wsa10:Address>
+        <wsa10:Address>net.tcp://10.201.41.88:8732//WCFService/Service1/</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

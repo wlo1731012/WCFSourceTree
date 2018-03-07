@@ -14,6 +14,8 @@ namespace UseWCF
         private int selectedFlag = 0;
         private int selectedIndex = -1;
 
+        private Thread threadA;
+
         static CallBack back = new CallBack();
         static InstanceContext context = new InstanceContext(back);
         netTCPServiceReference.Service1Client service = new netTCPServiceReference.Service1Client(context);
@@ -21,6 +23,8 @@ namespace UseWCF
         public WCFClient()
         {
             InitializeComponent();
+
+            //threadA = Service1.;
 
             btnLogin.Enabled = false;
             btnChat.Enabled = false;
@@ -141,14 +145,18 @@ namespace UseWCF
             string filePath = OpenDialog();
             if (filePath != "")
             {
+                WCFClient wcfClient = new WCFClient();
+                
                 ClientFile clientFile = new ClientFile();
                 clientFile.ClientName = txtUserName.Text;
                 clientFile.Buffer = new byte[100000];
+
                 string[] splitString = filePath.Split('\\');
                 FileInfo fileInfo = new FileInfo(filePath); // Get file Length
                 MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(filePath), splitString[splitString.Length - 1], fileInfo.Length);
                 bool isChangeFileName = false;
                 long totalBytesRead = 0;
+                double currentProgress = 0;
                 
                 do
                 {
@@ -160,7 +168,12 @@ namespace UseWCF
 
                     isChangeFileName = true;
                     totalBytesRead += clientFile.BytesRead;
-                    double currentProgress = (((double)totalBytesRead) / sendFileInfo.FileSize) * 100;
+
+                    if (sendFileInfo.FileSize != 0)
+                        currentProgress = (((double)totalBytesRead) / sendFileInfo.FileSize) * 100;
+                    else
+                        currentProgress = 100;
+
                     pgbReadFile.Value = Convert.ToInt32(currentProgress);
                     
                 } while (totalBytesRead != sendFileInfo.FileSize);//== buffer.Length

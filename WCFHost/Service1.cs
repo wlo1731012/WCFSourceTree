@@ -20,16 +20,14 @@ namespace WCFService
         public static Dictionary<string, string> _dicHostUserid = null;// Record client's user name and session id
         public static bool _isNewUser = false;
         public static bool _isSendMessage = false;
-        //public static bool _isReceiveFile = false;
-        public static bool _isChangeFileName = false;
 
         public static Person _sendMessenger;
         public static string _receiveMessenger;
 
-        public ClientFile _clientFile;
-
-        public delegate void ListenerHandler_ReceiveFile(ClientFile clientFile, bool isChangeFileName);
+        public delegate void ListenerHandler_ReceiveFile(string clientName, string fileName, bool isChangeFileName);
         public static event ListenerHandler_ReceiveFile listenerHandler_ReceiveFile = null;
+
+        private string filePath;
 
         public Service1()
         {
@@ -180,11 +178,31 @@ namespace WCFService
 
         public void ReceiveFile(ClientFile clientFile, bool isChangeFileName)
         {
-            _clientFile = clientFile;
-            _isChangeFileName = isChangeFileName;
-
-            if (listenerHandler_ReceiveFile != null)
-                listenerHandler_ReceiveFile(_clientFile, _isChangeFileName);
+            if (listenerHandler_ReceiveFile != null && isChangeFileName == false)
+            {
+                listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
+                filePath = "D:\\Folder2\\" + clientFile.ClientName + "_" + clientFile.FileName;
+                filePath = CheckFileName(filePath);
+            }
+            clientFile.ReceiveFileStream = File.Open(filePath, FileMode.Append);
+            clientFile.ReceiveFileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
+            clientFile.ReceiveFileStream.Close();
+        }
+        private string CheckFileName(string filePath)
+        {
+            string[] splitPath = filePath.Split('.');
+            string extensionName = "." + splitPath[splitPath.Length - 1];
+            int nameCount = 0;
+            while (true)
+            {
+                if (File.Exists(filePath) == true)
+                {
+                    nameCount++;
+                    filePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
+                }
+                else
+                    return filePath;
+            }
         }
     }
 }
