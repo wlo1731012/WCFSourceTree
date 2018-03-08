@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="42507625-ee10-4bde-90bb-a09aa7e2f21d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a0b1f6fa-c32b-4790-97d8-79a63979c759" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="a2f58ad5-7a45-4cf6-87f5-4f972a8f1cfc" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f2dc14c0-7e26-4bb5-b4b1-6589d5f16252" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
+    <MetadataFile FileName="WCFService.xsd" MetadataType="Schema" ID="09d18c07-a4ec-4f58-9cdd-b67d4b3134fc" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="cf190885-98ca-4569-b5c0-20bd9799d6f0" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="30a37dfb-8b86-4dab-933d-4fde0d8206aa" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
