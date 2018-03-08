@@ -15,7 +15,7 @@ namespace WCFClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WCFClient());
+            Application.Run(new ClientForm());
         }
     }
 }

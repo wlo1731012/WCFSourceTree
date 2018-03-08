@@ -181,21 +181,22 @@ namespace WCFService
 
         public void ReceiveFile(ClientFile clientFile, bool isChangeFileName)
         {
-            if (clientFile.isFinsishFlag == false)
+            if (clientFile.isFinsishFlag == true)
+            {
+                fileStream.Close();
+            }
+            else
             {
                 if (listenerHandler_ReceiveFile != null && isChangeFileName == false) // Check if this file is first time transport to Service then give it name
                 {
-                    listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
+                    //listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
                     _filePath = "D:\\Folder2\\" + clientFile.ClientName + "_" + clientFile.FileName;
                     _filePath = CheckFileName(_filePath);
 
                     fileStream = File.Open(_filePath, FileMode.Append);
+                    //fileStream = new FileStream(_filePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
                 }
                 fileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
-            }
-            else
-            {
-                fileStream.Close();
             }
         }
         private string CheckFileName(string filePath)
