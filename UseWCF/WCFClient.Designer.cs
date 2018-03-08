@@ -111,7 +111,6 @@
             this.pgbReadFile.Size = new System.Drawing.Size(421, 23);
             this.pgbReadFile.TabIndex = 14;
             // 
-<<<<<<< HEAD
             // btnDownload
             // 
             this.btnDownload.Location = new System.Drawing.Point(466, 319);
@@ -122,8 +121,6 @@
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
-=======
->>>>>>> b2a09538997a7880cd63036834ee434f2bd38a6f
             // WCFClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
