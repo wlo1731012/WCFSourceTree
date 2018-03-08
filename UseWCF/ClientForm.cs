@@ -135,6 +135,7 @@ namespace WCFClient
                     {
                         sw_step.Reset();
                         sw_step.Start();
+
                         clientFile.BytesRead = sendFileInfo.Stream.Read(clientFile.Buffer, 0, clientFile.Buffer.Length);
                         clientFile.FileName = sendFileInfo.FileName;
                         clientFile.BufferSize = clientFile.Buffer.Length;
