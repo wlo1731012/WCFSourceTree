@@ -12,45 +12,27 @@ using System.Threading;
 namespace WCFService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]//,InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class Service1 : IService1
     {
         private List<string> _userList = new List<string>();
-        private string _filePath = "";
-        private IService1Callback _callBack;
+        public static Dictionary<string, ICallBackServices> _dicHostSessionid = null;// Record client's session id and CallBack
+        public static Dictionary<string, string> _dicHostUserid = null;// Record client's user name and session id
+        public static bool _isNewUser = false;
+        public static bool _isSendMessage = false;
 
-        public static Dictionary<string, IService1Callback> DicIDAndCB = new Dictionary<string, IService1Callback>();// Record client's session id and CallBack
-        public static Dictionary<string, string> DicNameAndID = new Dictionary<string,string>();// Record client's user name and session id
-
-        public static bool isNewUser = false;
-        public static bool isSendMessage = false;
-        public static bool isSendFile = false;
-
-        public static bool isTest = false;
-        public static string clientNameTest;
-
-        public static Person SendMessenger;
-        public static string ReceiveMessenger;
-
+        public static Person _sendMessenger;
+        public static string _receiveMessenger;
 
         public delegate void ListenerHandler_ReceiveFile(string clientName, string fileName, bool isChangeFileName);
         public static event ListenerHandler_ReceiveFile listenerHandler_ReceiveFile = null;
 
-        public delegate void ListenerHandler_SendFile(ServiceFile serviceFile, double currentProgress, bool isFirstTime);
-        public static event ListenerHandler_SendFile listenerHandler_SendFile = null;
-
-        public delegate void ListenerHandler_Test(string clientName);
-        public static event ListenerHandler_Test listenerHandler_Test = null;
-
-        public delegate void ListenerHandler_SendToOtherClients(Person person, string specificClient);
-        public static event ListenerHandler_SendToOtherClients listenerHandler_sendToOtherClients = null;
-
-        public FileStream fileStream;
+        private string filePath;
 
         public Service1()
         {
-            DicNameAndID = new Dictionary<string, string>();
-            DicIDAndCB = new Dictionary<string, IService1Callback>();
+            _dicHostSessionid = new Dictionary<string, ICallBackServices>();
+            _dicHostUserid = new Dictionary<string, string>();
         }
         /// <summary>
         /// Register client's name and closing event
@@ -59,14 +41,14 @@ namespace WCFService
         /// 
         public void Register(string userName)
         {
-            IService1Callback callBack = OperationContext.Current.GetCallbackChannel<IService1Callback>();
+            ICallBackServices client = OperationContext.Current.GetCallbackChannel<ICallBackServices>();
             string sessionid = OperationContext.Current.SessionId;
             OperationContext.Current.Channel.Closing += new EventHandler(Channel_Closing); // Regist client's closing event
-            
-            DicNameAndID.Add(userName, sessionid);
-            DicIDAndCB.Add(sessionid, callBack);//If type is seesion id, add it
 
-            isNewUser = true;
+            _dicHostSessionid.Add(sessionid, client);//If type is seesion id, add it
+            _dicHostUserid.Add(userName, sessionid);
+
+            _isNewUser = true;
         }
 
         /// <summary>
@@ -76,14 +58,14 @@ namespace WCFService
         /// <param name="e"></param>
         void Channel_Closing(object sender, EventArgs e)
         {
-            if (DicIDAndCB != null && DicIDAndCB.Count > 0)
+            if (_dicHostSessionid != null && _dicHostSessionid.Count > 0)
             {
-                isNewUser = true;
-                foreach (var dic in DicNameAndID)
-                    if (DicIDAndCB[dic.Value] == (IService1Callback)sender)//Remove the client's data
+                _isNewUser = true;
+                foreach (var dic in _dicHostUserid)
+                    if (_dicHostSessionid[dic.Value] == (ICallBackServices)sender)//Remove the client's data
                     {
-                        DicIDAndCB.Remove(DicNameAndID[dic.Key]);
-                        DicNameAndID.Remove(dic.Key);
+                        _dicHostSessionid.Remove(_dicHostUserid[dic.Key]);
+                        _dicHostUserid.Remove(dic.Key);
                         break;
                     }
             }
@@ -96,10 +78,10 @@ namespace WCFService
         /// <param name="specificClient">Send message to who</param>
         public void SendToOtherClients(Person person, string specificClient)
         {
-            SendMessenger = person;
-            ReceiveMessenger = specificClient;
-            listenerHandler_sendToOtherClients(SendMessenger, ReceiveMessenger);
-            //isSendMessage = true;
+            _sendMessenger = person;
+            _receiveMessenger = specificClient;
+
+            _isSendMessage = true;
         }
         /// <summary>
         /// Get File data with type of list
@@ -196,104 +178,31 @@ namespace WCFService
 
         public void ReceiveFile(ClientFile clientFile, bool isChangeFileName)
         {
-            if (clientFile.isFinsishFlag == true)
+            if (listenerHandler_ReceiveFile != null && isChangeFileName == false)
             {
-                fileStream.Close();
+                listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
+                filePath = "D:\\Folder2\\" + clientFile.ClientName + "_" + clientFile.FileName;
+                filePath = CheckFileName(filePath);
             }
-            else
-            {
-                if (listenerHandler_ReceiveFile != null && isChangeFileName == false) // Check if this file is first time transport to Service then give it name
-                {
-                    listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
-                    _filePath = "D:\\Folder2\\" + clientFile.ClientName + "_" + clientFile.FileName;
-                    _filePath = CheckFileName(_filePath);
-
-                    //fileStream = File.Open(_filePath, FileMode.Append);
-                    fileStream = new FileStream(_filePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
-                }
-                fileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
-            }
-        }
-        public static IService1Callback callBackkk;
-        public void SendFile(string clientName)
-        {
-            //_filePath = "D:\\Folder2\\AddNewUser.JPG";
-            //int bufferSize = 1;
-            //int tillCurrentBytesRead = 0;
-            double currentProgress = 0;
-            bool isFirstTime = true;
-            ServiceFile serviceFile = new ServiceFile();
-
-            ////_callBack = OperationContext.Current.GetCallbackChannel<ICallBackServices>();
-            //string[] splitString = _filePath.Split('\\');
-            //FileInfo fileInfo = new FileInfo(_filePath); // Get file Length
-            //MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(_filePath), splitString[splitString.Length - 1], fileInfo.Length);
-
-            //serviceFile.Buffer = new byte[bufferSize];
-            //serviceFile.BufferSize = bufferSize;
-            //serviceFile.TotalBytes = sendFileInfo.FileSize;
-            serviceFile.ClientName = clientName;
-
-            //do
-            //{
-                //serviceFile.BytesRead = sendFileInfo.Stream.Read(serviceFile.Buffer, 0, serviceFile.Buffer.Length);
-                //serviceFile.FileName = sendFileInfo.FileName;
-                //serviceFile.isFinsishFlag = false;
-
-                //tillCurrentBytesRead += serviceFile.BytesRead;
-
-                //if (sendFileInfo.FileSize != 0)
-                //    currentProgress = (((double)tillCurrentBytesRead) / sendFileInfo.FileSize) * 100;
-                //else
-                    currentProgress = 100;
-
-                //listenerHandler_ReceiveFile(clientName, "123", false);
-                listenerHandler_SendFile(serviceFile, currentProgress, isFirstTime);
-                //DicIDAndCB[DicNameAndID[serviceFile.ClientName]].UpdateDownloadFile(serviceFile, currentProgress, isFirstTime);
-                //_callBack.SendMessage(person, 1);
-                //string sessionID = DicNameAndID[clientName];
-                //DicIDAndCB[sessionID].test();
-
-                //callBackkk = OperationContext.Current.GetCallbackChannel<IService1Callback>();
-                //callBackkk.test();
-
-                isFirstTime = false;
-
-            //    if (currentProgress == 100)
-            //    {
-            //        serviceFile.isFinsishFlag = true;
-            //        string sessionID = DicNameAndID[serviceFile.ClientName];
-            //        listenerHandler_SendFile(serviceFile, currentProgress, isFirstTime);
-            //        //DicIDAndCB[sessionID].UpdateDownloadFile(serviceFile, currentProgress, isFirstTime); // for file closing
-            //    }
-
-            //} while (currentProgress != 100);
-
-        }
-        public void Test(string clientName)
-        {
-            clientNameTest = clientName;
-            listenerHandler_Test(clientName);
+            clientFile.ReceiveFileStream = File.Open(filePath, FileMode.Append);
+            clientFile.ReceiveFileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
+            clientFile.ReceiveFileStream.Close();
         }
         private string CheckFileName(string filePath)
         {
             string[] splitPath = filePath.Split('.');
             string extensionName = "." + splitPath[splitPath.Length - 1];
-            string newFilePath = filePath;
             int nameCount = 0;
             while (true)
             {
-                if (File.Exists(newFilePath) == true)
+                if (File.Exists(filePath) == true)
                 {
                     nameCount++;
-                    newFilePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
+                    filePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
                 }
                 else
-                    return newFilePath;
+                    return filePath;
             }
         }
-
-        
-        
     }
 }

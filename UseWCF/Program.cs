@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WCFClient
+namespace UseWCF
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace WCFClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ClientForm());
+            Application.Run(new WCFClient());
         }
     }
 }

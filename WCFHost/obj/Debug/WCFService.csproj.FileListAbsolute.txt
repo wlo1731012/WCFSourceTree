@@ -1,11 +1,9 @@
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\WCFHost.dll
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\WCFHost.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\UseWCF2.exe
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\UseWCF2.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFService.csprojResolveAssemblyReference.cache
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFHost.dll
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFHost.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFHost.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFHost.pdb

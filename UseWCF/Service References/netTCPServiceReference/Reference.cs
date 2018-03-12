@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WCFClient.netTCPServiceReference {
+namespace UseWCF.netTCPServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="netTCPServiceReference.IService1", CallbackContract=typeof(WCFClient.netTCPServiceReference.IService1Callback), SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="netTCPServiceReference.IService1", CallbackContract=typeof(UseWCF.netTCPServiceReference.IService1Callback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Register", ReplyAction="http://tempuri.org/IService1/RegisterResponse")]
@@ -29,12 +29,6 @@ namespace WCFClient.netTCPServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReceiveFile", ReplyAction="http://tempuri.org/IService1/ReceiveFileResponse")]
         void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendFile", ReplyAction="http://tempuri.org/IService1/SendFileResponse")]
-        void SendFile(string clientName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Test", ReplyAction="http://tempuri.org/IService1/TestResponse")]
-        void Test(string clientName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -45,21 +39,15 @@ namespace WCFClient.netTCPServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService1/UpdateUserList")]
         void UpdateUserList(string[] userList);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService1/UpdateDownloadFile")]
-        void UpdateDownloadFile(WCFService.ServiceFile serviceFile, double currentProgress, bool isFirstTime);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService1/test")]
-        void test();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : WCFClient.netTCPServiceReference.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : UseWCF.netTCPServiceReference.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.DuplexClientBase<WCFClient.netTCPServiceReference.IService1>, WCFClient.netTCPServiceReference.IService1 {
+    public partial class Service1Client : System.ServiceModel.DuplexClientBase<UseWCF.netTCPServiceReference.IService1>, UseWCF.netTCPServiceReference.IService1 {
         
         public Service1Client(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -99,14 +87,6 @@ namespace WCFClient.netTCPServiceReference {
         
         public void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName) {
             base.Channel.ReceiveFile(clientFile, isChangeFileName);
-        }
-        
-        public void SendFile(string clientName) {
-            base.Channel.SendFile(clientName);
-        }
-        
-        public void Test(string clientName) {
-            base.Channel.Test(clientName);
         }
     }
 }

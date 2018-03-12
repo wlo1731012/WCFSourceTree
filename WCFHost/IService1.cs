@@ -10,7 +10,7 @@ using System.IO;
 namespace WCFService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IService1Callback))]
+    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(ICallBackServices))]
     public interface IService1
     {
         [OperationContract(IsOneWay = false)]
@@ -25,14 +25,9 @@ namespace WCFService
 
         [OperationContract]
         void ReceiveFile(ClientFile clientFile, bool isChangeFileName);
-        [OperationContract(IsOneWay = false)]
-        void SendFile(string clientName);
-
-        [OperationContract]
-        void Test(string clientName);
 
     }
-    public interface IService1Callback
+    public interface ICallBackServices
     {
         // contentType
         // 0 = Service to everyone
@@ -43,11 +38,7 @@ namespace WCFService
         void SendMessage(Person person, int contentType);
         [OperationContract(IsOneWay = true)]
         void UpdateUserList(List<string> userList);
-        [OperationContract]
-        void UpdateDownloadFile(ServiceFile serviceFile, double currentProgress, bool isFirstTime);
 
-        [OperationContract(IsOneWay = true)]
-        void test();
     }
 
     [DataContract] // Add a new type
@@ -87,29 +78,10 @@ namespace WCFService
         [DataMember]
         public int BytesRead;
         [DataMember]
-        public byte[] Buffer; // Tranported onformation once
+        public int BufferSize;
         [DataMember]
-        public int BufferSize; // Size of tranported onformation once
+        public FileStream ReceiveFileStream;
         [DataMember]
-        public bool isFinsishFlag;
-    }
-
-    [DataContract] // Add a new type
-    public class ServiceFile
-    {
-        //[DataMember]
-        //public string FileName;
-        [DataMember]
-        public string ClientName;
-        //[DataMember]
-        //public int BytesRead;
-        //[DataMember]
-        //public long TotalBytes;
-        //[DataMember]
-        //public byte[] Buffer; // Tranported onformation once
-        //[DataMember]
-        //public int BufferSize; // Size of tranported onformation once
-        [DataMember]
-        public bool isFinsishFlag;
+        public byte[] Buffer;
     }
 }
