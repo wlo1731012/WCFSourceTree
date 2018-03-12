@@ -1,6 +1,6 @@
-﻿namespace UseWCF
+﻿namespace WCFClient
 {
-    partial class WCFClient
+    partial class ClientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,17 +34,18 @@
             this.txtChat = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lsbUserList = new System.Windows.Forms.ListBox();
-            this.btnFile = new System.Windows.Forms.Button();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.pgbReadFile = new System.Windows.Forms.ProgressBar();
+            this.btnDownload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnChat
             // 
-            this.btnChat.Location = new System.Drawing.Point(385, 320);
+            this.btnChat.Location = new System.Drawing.Point(307, 807);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(74, 27);
             this.btnChat.TabIndex = 0;
-            this.btnChat.Text = "CHAT";
+            this.btnChat.Text = "Chat";
             this.btnChat.UseVisualStyleBackColor = true;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
@@ -59,18 +60,18 @@
             // rtbHistory
             // 
             this.rtbHistory.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.rtbHistory.Location = new System.Drawing.Point(118, 50);
+            this.rtbHistory.Location = new System.Drawing.Point(119, 50);
             this.rtbHistory.Name = "rtbHistory";
-            this.rtbHistory.Size = new System.Drawing.Size(422, 263);
+            this.rtbHistory.Size = new System.Drawing.Size(422, 751);
             this.rtbHistory.TabIndex = 11;
             this.rtbHistory.Text = "";
             this.rtbHistory.TextChanged += new System.EventHandler(this.rtbHistory_TextChanged);
             // 
             // txtChat
             // 
-            this.txtChat.Location = new System.Drawing.Point(118, 319);
+            this.txtChat.Location = new System.Drawing.Point(119, 807);
             this.txtChat.Name = "txtChat";
-            this.txtChat.Size = new System.Drawing.Size(261, 22);
+            this.txtChat.Size = new System.Drawing.Size(182, 22);
             this.txtChat.TabIndex = 9;
             // 
             // btnLogin
@@ -89,41 +90,52 @@
             this.lsbUserList.ItemHeight = 12;
             this.lsbUserList.Location = new System.Drawing.Point(12, 50);
             this.lsbUserList.Name = "lsbUserList";
-            this.lsbUserList.Size = new System.Drawing.Size(100, 328);
+            this.lsbUserList.Size = new System.Drawing.Size(100, 808);
             this.lsbUserList.TabIndex = 12;
             this.lsbUserList.SelectedIndexChanged += new System.EventHandler(this.lsbUserList_SelectedIndexChanged);
             // 
-            // btnFile
+            // btnUpload
             // 
-            this.btnFile.Location = new System.Drawing.Point(465, 320);
-            this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(74, 27);
-            this.btnFile.TabIndex = 13;
-            this.btnFile.Text = "FILE";
-            this.btnFile.UseVisualStyleBackColor = true;
-            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            this.btnUpload.Location = new System.Drawing.Point(387, 807);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(74, 27);
+            this.btnUpload.TabIndex = 13;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // pgbReadFile
             // 
-            this.pgbReadFile.Location = new System.Drawing.Point(118, 355);
+            this.pgbReadFile.Location = new System.Drawing.Point(119, 835);
             this.pgbReadFile.Name = "pgbReadFile";
             this.pgbReadFile.Size = new System.Drawing.Size(421, 23);
             this.pgbReadFile.TabIndex = 14;
             // 
-            // WCF1Form
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(467, 807);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(74, 27);
+            this.btnDownload.TabIndex = 15;
+            this.btnDownload.Text = "Download";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
+            // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 389);
+            this.ClientSize = new System.Drawing.Size(552, 870);
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.pgbReadFile);
-            this.Controls.Add(this.btnFile);
+            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.lsbUserList);
             this.Controls.Add(this.rtbHistory);
             this.Controls.Add(this.txtChat);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.btnChat);
-            this.Name = "WCF1Form";
+            this.Name = "ClientForm";
             this.Text = "Client1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -138,8 +150,9 @@
         private System.Windows.Forms.TextBox txtChat;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.ListBox lsbUserList;
-        private System.Windows.Forms.Button btnFile;
+        private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.ProgressBar pgbReadFile;
+        private System.Windows.Forms.Button btnDownload;
     }
 }
 

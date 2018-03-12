@@ -5,8 +5,6 @@ D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostF
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.csproj.GenerateResource.Cache
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.exe
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\bin\Debug\WCFHost.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\bin\Debug\WCFHost.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.csprojResolveAssemblyReference.cache
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFServiceHostForm\bin\Debug\WCFServiceHostForm.exe.config
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - dontchange\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.exe
@@ -69,9 +67,14 @@ D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServic
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFServiceHostForm.exe
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFServiceHostForm.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFHost.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFHost.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.csprojResolveAssemblyReference.cache
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.ServiceForm.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.Properties.Resources.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.csproj.GenerateResource.Cache
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFServiceHostForm\bin\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\WCFServiceHostForm\bin\Debug\WCFServiceHostForm.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\WCFServiceHostForm\obj\x86\Debug\WCFServiceHostForm.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\bin\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFServiceHostForm\bin\Debug\WCFService.pdb

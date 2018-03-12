@@ -1,22 +1,25 @@
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\UseWCF.exe.config
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\UseWCF.exe
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\UseWCF.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFHost.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFHost.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\WCFClient.csprojResolveAssemblyReference.cache
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.WCFClient.resources
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\WCFClient.csproj.GenerateResource.Cache
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.exe
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\UseWCF.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\UseWCF.exe.config
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\UseWCF.exe
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\UseWCF.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\UseWCF.exe
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\UseWCF.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFHost.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.csprojResolveAssemblyReference.cache
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\UseWCF.WCFClient.resources
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\UseWCF.Properties.Resources.resources
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.csproj.GenerateResource.Cache
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFHost.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFClient.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.Properties.Resources.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFClient.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFClient.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\obj\x86\Debug\WCFClient.ClientForm.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\UseWCF\bin\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\UseWCF\bin\Debug\WCFClient.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\UseWCF\obj\x86\Debug\WCFClient.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\UseWCF\obj\x86\Debug\WCFClient.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFClient.exe.config
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\WCFClient.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\WCFClient.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFClient.exe
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFClient.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\bin\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\WCFClient.ClientForm.resources
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\UseWCF\obj\x86\Debug\WCFClient.Properties.Resources.resources
