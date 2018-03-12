@@ -12,29 +12,29 @@ namespace WCFClient
     public partial class ClientForm : Form//WCFClient
     {
         private string _userName;
-        private int selectedFlag = 0;
-        private int selectedIndex = -1;
+        private int _selectedFlag = 0;
+        private int _selectedIndex = -1;
+        private FileStream _fileStream;
+        private string _filePath;
 
-        private Thread threadA;
-
-        static CallBack back = new CallBack();
-        static InstanceContext context = new InstanceContext(back);
+        private static CallBack _back = new CallBack();
+        static InstanceContext context = new InstanceContext(_back);
         netTCPServiceReference.Service1Client service = new netTCPServiceReference.Service1Client(context);
-        
+
         public ClientForm()
         {
             InitializeComponent();
 
-            //threadA = Service1.;
-
             btnLogin.Enabled = false;
             btnChat.Enabled = false;
             btnUpload.Enabled = false;
+            btnDownload.Enabled = false;
             rtbHistory.Enabled = false;
             lsbUserList.Enabled = false;
             txtChat.Enabled = false;
 
-            back.SetForm(this); // Let CallBack class konw what it is
+            timer1.Start();
+            _back.SetForm(this); // Let CallBack class konw what it is
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -44,6 +44,7 @@ namespace WCFClient
 
             btnChat.Enabled = true;
             btnUpload.Enabled = true;
+            btnDownload.Enabled = true;
             rtbHistory.Enabled = true;
             lsbUserList.Enabled = true;
             txtChat.Enabled = true;
@@ -66,7 +67,7 @@ namespace WCFClient
             person.UserName = _userName;
             person.ChatContent = txtChat.Text;
 
-            if (lsbUserList.SelectedItem != null)
+            if (lsbUserList.SelectedItem != null) // If selet someone
             {
                 selectedItem = lsbUserList.SelectedItem.ToString();
 
@@ -90,7 +91,7 @@ namespace WCFClient
             }
         }
 
-        private void btnFile_Click(object sender, EventArgs e)
+        private void btnUpload_Click(object sender, EventArgs e)
         {
             string filePath = OpenDialog();
             string usingTime = "";
@@ -106,8 +107,8 @@ namespace WCFClient
                 ClientFile clientFile = new ClientFile();
                 clientFile.ClientName = txtUserName.Text;
 
-                for (int i = 0; i < 5; i++)
-                {
+                //for (int i = 0; i < 5; i++)
+                //{
                     sw_total.Reset();
                     sw_step.Reset();
                     sw_total.Start();
@@ -124,7 +125,7 @@ namespace WCFClient
                     MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(filePath), splitString[splitString.Length - 1], fileInfo.Length);
 
                     clientFile.Buffer = new byte[bufferSize]; // In C#, if u give byte array a new assign, it will release orgin space that u used automatically by GC.
-
+                    
                     timesCount++;
                     rtbHistory.AppendText("\n-----No. " + timesCount.ToString() + " transport " + sendFileInfo.FileName + "-----\n\n");
                     sw_step.Stop();
@@ -177,17 +178,22 @@ namespace WCFClient
                 {
                     rtbHistory.AppendText("-No. " + i.ToString() + " transport " + usingTimeList[i-1] + " ms-\n");
                 }
-                    
-                back.SetForm(this);
+
+                _back.SetForm(this);
                 //service.ReceiveFile(clientFile, finishFlag);
-            }
+            //}
         }
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-
+            //service.SendFile(txtUserName.Text);
+            service.Test(txtUserName.Text);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            service.Test(txtUserName.Text);
+        }
         private void txtUserName_TextChanged(object sender, EventArgs e)
         {
             if (txtUserName.Text != "")
@@ -226,20 +232,34 @@ namespace WCFClient
         {
             if (lsbUserList.SelectedItem != null && lsbUserList.SelectedItem.ToString() == _userName)
                 lsbUserList.ClearSelected();
-            else if (lsbUserList.SelectedIndex == selectedIndex && selectedFlag == 1)
+            else if (lsbUserList.SelectedIndex == _selectedIndex && _selectedFlag == 1)
             {
                 lsbUserList.SelectedIndex = -1;
-                selectedFlag = 0;
+                _selectedFlag = 0;
             }
             else
             {
-                selectedIndex = lsbUserList.SelectedIndex;
-                selectedFlag = 1;
+                _selectedIndex = lsbUserList.SelectedIndex;
+                _selectedFlag = 1;
             }
 
         }
 
-        
+         private string OpenDialog()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select file";
+            dialog.InitialDirectory = ".\\";
+            dialog.Filter = "all files (*.*)|*.*";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+                return dialog.FileName;
+            else
+                return "";
+        }
+
+        #region CallBack function using
+
         #region Send Message Type
         public void ServiceBroadCastMessage(Person person)
         {
@@ -276,17 +296,52 @@ namespace WCFClient
             }
         }
 
-        private string OpenDialog()
+        public void UpdateDownloadFile(ServiceFile servieFile, double currentProgress, bool isFirstTime)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select file";
-            dialog.InitialDirectory = ".\\";
-            dialog.Filter = "all files (*.*)|*.*";
+            //pgbReadFile.Value = Convert.ToInt32(currentProgress);
+            //if (servieFile.isFinsishFlag == true)
+            //{
+            //    _fileStream.Close();
+            //}
+            //else
+            //{
+            //    if (isFirstTime == false) // Check if this file is first time transport to Service then give it name
+            //    {
+            //        //listenerHandler_ReceiveFile(clientFile.ClientName, clientFile.FileName, isChangeFileName); // Make GUI display text
+            //        _filePath = "D:\\FolderDownload\\Service_" + servieFile.FileName;
+            //        _filePath = CheckFileName(_filePath);
 
-            if (dialog.ShowDialog() == DialogResult.OK)
-                return dialog.FileName;
-            else
-                return "";
+            //        _fileStream = File.Open(_filePath, FileMode.Append);
+            //        //fileStream = new FileStream(_filePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            //    }
+            //    _fileStream.Write(servieFile.Buffer, 0, servieFile.BytesRead);
+            //}
+            MessageBox.Show("123");
+        }
+
+        private string CheckFileName(string filePath)
+        {
+            string[] splitPath = filePath.Split('.');
+            string extensionName = "." + splitPath[splitPath.Length - 1];
+            string newFilePath = filePath;
+            int nameCount = 0;
+            while (true)
+            {
+                if (File.Exists(newFilePath) == true)
+                {
+                    nameCount++;
+                    newFilePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
+                }
+                else
+                    return newFilePath;
+            }
+        }
+        #endregion
+        int time = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time++;
+            lblTimer.Text = "Time : " + time.ToString();
         }
 
     }
@@ -330,6 +385,14 @@ namespace WCFClient
             _wcfForm.UpdateUserList(userList);
         }
 
+        public void UpdateDownloadFile(ServiceFile serviceFile, double currentProgress, bool isFirstTime)
+        {
+            _wcfForm.UpdateDownloadFile(serviceFile, currentProgress, isFirstTime);
+        }
+        public void test()
+        {
+            MessageBox.Show("Hi");
+        }
         #endregion
     }
 }

@@ -84,6 +84,30 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendFileResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Test">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
@@ -97,6 +121,20 @@
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userList" nillable="true" type="q4:ArrayOfstring" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDownloadFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="serviceFile" nillable="true" type="q5:ServiceFile" />
+        <xs:element minOccurs="0" name="currentProgress" type="xs:double" />
+        <xs:element minOccurs="0" name="isFirstTime" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

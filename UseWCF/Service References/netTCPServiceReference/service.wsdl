@@ -49,11 +49,29 @@
   <wsdl:message name="IService1_ReceiveFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReceiveFileResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_SendFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Test_InputMessage">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Test_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_SendMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
   <wsdl:message name="IService1_UpdateUserList_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateDownloadFile_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_test_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:test" />
   </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IService1">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Register">
@@ -76,11 +94,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReceiveFile" message="tns:IService1_ReceiveFile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReceiveFileResponse" message="tns:IService1_ReceiveFile_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendFile" message="tns:IService1_SendFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendFileResponse" message="tns:IService1_SendFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Test">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Test" message="tns:IService1_Test_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TestResponse" message="tns:IService1_Test_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendMessage" message="tns:IService1_SendMessage_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateUserList">
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserList" message="tns:IService1_UpdateUserList_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateDownloadFile">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateDownloadFile" message="tns:IService1_UpdateDownloadFile_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="test">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/test" message="tns:IService1_test_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="netTcpBinding" type="tns:IService1">
@@ -132,6 +164,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendFile">
+      <soap12:operation soapAction="http://tempuri.org/IService1/SendFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://tempuri.org/IService1/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SendMessage">
       <soap12:operation soapAction="http://tempuri.org/IService1/SendMessage" style="document" />
       <wsdl:output>
@@ -140,6 +190,18 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUserList">
       <soap12:operation soapAction="http://tempuri.org/IService1/UpdateUserList" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDownloadFile">
+      <soap12:operation soapAction="http://tempuri.org/IService1/UpdateDownloadFile" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap12:operation soapAction="http://tempuri.org/IService1/test" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

@@ -22,7 +22,6 @@ namespace WCFServiceHostForm//WCFServiceHostForm
         private static object InstObj = new object();
         private int selectedFlag = 0;
         private int selectedIndex = -1;
-        public Thread threadReceiveMessage;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -30,10 +29,12 @@ namespace WCFServiceHostForm//WCFServiceHostForm
             host.Open(); // Start Listening
             
             Service1.listenerHandler_ReceiveFile += new Service1.ListenerHandler_ReceiveFile(ReceiveFile);
-
+            Service1.listenerHandler_SendFile += new Service1.ListenerHandler_SendFile(SendFile);
+            Service1.listenerHandler_Test += new Service1.ListenerHandler_Test(Test);
+            Service1.listenerHandler_sendToOtherClients += new Service1.ListenerHandler_SendToOtherClients(SendToOtherClient);
             #region Thread Working
 
-            threadReceiveMessage = new Thread(new ThreadStart(delegate   //Listen all clients chat content
+            Thread threadReceiveMessage = new Thread(new ThreadStart(delegate   //Listen all clients chat content
             {
                 lock (InstObj)//Lock for multiple
                 {
@@ -47,12 +48,12 @@ namespace WCFServiceHostForm//WCFServiceHostForm
                         {
                             AddNewUser();
                         }
-                        //else if (Service1._isReceiveFile == true)
+                        //else if (Service1.isTest == true)
                         //{
-                        //    ReceiveFile(Service1._clientFile);
+                        //    Test();
                         //}
 
-                        Thread.Sleep(10);
+                        Thread.Sleep(100);
                     }
                 }
             }));
@@ -66,23 +67,23 @@ namespace WCFServiceHostForm//WCFServiceHostForm
         {
             string sessionID = "";
             List<string> userList = new List<string>();
-            if (Service1.DicHostSessionid != null || Service1.DicHostSessionid.Count > 0)
+            if (Service1.DicIDAndCB != null || Service1.DicIDAndCB.Count > 0)
             {
-                this.Invoke(new MethodInvoker(delegate { this.lsbUserList.Items.Clear(); }));
-                foreach (var clientList in Service1.DicHostUserid) // id.key = userName, id.Value = sessionID
+                this.Invoke(new MethodInvoker(delegate { this.lsbUserList.Items.Clear(); })); // Clear listbox
+                foreach (var userName in Service1.DicNameAndID) // id.key = userName, id.Value = sessionID
                 {
-                    userList.Add(clientList.Key);
+                    userList.Add(userName.Key);
 
                     this.Invoke(new MethodInvoker(delegate
                     {
-                        this.lsbUserList.Items.Add(clientList.Key); // UserList put in Service
+                        this.lsbUserList.Items.Add(userName.Key); // UserList put in Service
                     }));
                 }
 
-                foreach (var users in Service1.DicHostSessionid) // Update all client's list
+                foreach (var users in Service1.DicIDAndCB) // Update all client's list
                 {
                     sessionID = users.Key;
-                    Service1.DicHostSessionid[sessionID].UpdateUserList(userList);
+                    Service1.DicIDAndCB[sessionID].UpdateUserList(userList);
                 }
             }
             Service1.isNewUser = false; // Initialize
@@ -90,7 +91,7 @@ namespace WCFServiceHostForm//WCFServiceHostForm
 
         private void SendToOtherClient(Person person, string specificClient)
         {
-            string sessionID = Service1.DicHostUserid[person.UserName];
+            string sessionID = Service1.DicNameAndID[person.UserName];
             if (specificClient != "")
             {
                 if (specificClient == "Service")
@@ -104,13 +105,13 @@ namespace WCFServiceHostForm//WCFServiceHostForm
                 }
                 else 
                 {
-                    sessionID = Service1.DicHostUserid[specificClient];
-                    Service1.DicHostSessionid[sessionID].SendMessage(person, 3);
+                    sessionID = Service1.DicNameAndID[specificClient];
+                    Service1.DicIDAndCB[sessionID].SendMessage(person, 3);
                 }
             }
             else
             {
-                foreach (var id in Service1.DicHostSessionid) // Broadcast message to other clients without the one who send this message
+                foreach (var id in Service1.DicIDAndCB) // Broadcast message to other clients without the one who send this message
                 {
                     if (id.Key.ToString() != sessionID)
                         id.Value.SendMessage(person, 2);
@@ -136,7 +137,32 @@ namespace WCFServiceHostForm//WCFServiceHostForm
                 }));
             }
         }
-        
+        private void SendFile(ServiceFile serviceFile, double currentProgress, bool isFirstTime)
+        {
+            string sessionID = Service1.DicNameAndID[serviceFile.ClientName];
+            //Service1.DicIDAndCB[sessionID].UpdateDownloadFile(serviceFile, currentProgress, isFirstTime);
+             //Service1.DicIDAndCB[sessionID].test();
+        }
+        private void Test(string clientName)
+        {
+            string sessionID = Service1.DicNameAndID[Service1.clientNameTest];
+            Person person = new Person { UserName = "Yo", ChatContent = "What's up!" };
+            Service1.DicIDAndCB[sessionID].SendMessage(person, 1);
+            //Service1.DicIDAndCB[sessionID].test();
+        }
+        private string OpenDialog()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select file";
+            dialog.InitialDirectory = ".\\";
+            dialog.Filter = "all files (*.*)|*.*";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+                return dialog.FileName;
+            else
+                return "";
+        }
+
         #region Toolbox Event
         private void btnBroadCast_Click(object sender, EventArgs e)
         {
@@ -146,10 +172,10 @@ namespace WCFServiceHostForm//WCFServiceHostForm
             if (txtChat != null && lsbUserList.SelectedItem != null)
             {
                 string selectedItem = lsbUserList.SelectedItem.ToString();
-                if (Service1.DicHostUserid.ContainsKey(selectedItem))
+                if (Service1.DicNameAndID.ContainsKey(selectedItem))
                 {
-                    string sessionID = Service1.DicHostUserid[selectedItem];
-                    Service1.DicHostSessionid[sessionID].SendMessage(person, 1); // Service to specific client
+                    string sessionID = Service1.DicNameAndID[selectedItem];
+                    Service1.DicIDAndCB[sessionID].SendMessage(person, 1); // Service to specific client
 
                     rtbHistory.SelectionColor = Color.Red;
                     rtbHistory.AppendText(person.UserName + "[to " + selectedItem + "] : " + person.ChatContent + "\n");
@@ -158,7 +184,7 @@ namespace WCFServiceHostForm//WCFServiceHostForm
             }
             else
             {
-                foreach (var id in Service1.DicHostSessionid)
+                foreach (var id in Service1.DicIDAndCB)
                 {
                     id.Value.SendMessage(person, 0);// Broadcast message to every client
                 }

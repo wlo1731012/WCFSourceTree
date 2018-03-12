@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnChat = new System.Windows.Forms.Button();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.rtbHistory = new System.Windows.Forms.RichTextBox();
@@ -37,6 +38,8 @@
             this.btnUpload = new System.Windows.Forms.Button();
             this.pgbReadFile = new System.Windows.Forms.ProgressBar();
             this.btnDownload = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnChat
@@ -102,7 +105,7 @@
             this.btnUpload.TabIndex = 13;
             this.btnUpload.Text = "Upload";
             this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnFile_Click);
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // pgbReadFile
             // 
@@ -121,11 +124,26 @@
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Location = new System.Drawing.Point(432, 35);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(38, 12);
+            this.lblTimer.TabIndex = 16;
+            this.lblTimer.Text = "Time : ";
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 870);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.pgbReadFile);
             this.Controls.Add(this.btnUpload);
@@ -153,6 +171,8 @@
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.ProgressBar pgbReadFile;
         private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblTimer;
     }
 }
 
