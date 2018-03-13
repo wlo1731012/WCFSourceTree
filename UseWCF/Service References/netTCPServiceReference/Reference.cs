@@ -31,7 +31,7 @@ namespace WCFClient.netTCPServiceReference {
         void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendFile", ReplyAction="http://tempuri.org/IService1/SendFileResponse")]
-        int SendFile(WCFService.ServiceFile ClientAsked, ref System.IO.MemoryStream tmp);
+        void SendFile(ref WCFService.ServiceFile ClientAsked);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -95,8 +95,8 @@ namespace WCFClient.netTCPServiceReference {
             base.Channel.ReceiveFile(clientFile, isChangeFileName);
         }
         
-        public int SendFile(WCFService.ServiceFile ClientAsked, ref System.IO.MemoryStream tmp) {
-            return base.Channel.SendFile(ClientAsked, ref tmp);
+        public void SendFile(ref WCFService.ServiceFile ClientAsked) {
+            base.Channel.SendFile(ref ClientAsked);
         }
     }
 }

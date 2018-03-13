@@ -102,12 +102,6 @@
     <None Include="Service References\netTCPServiceReference\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\netTCPServiceReference\System.IO.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\netTCPServiceReference\System.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\netTCPServiceReference\WCFService.xsd">
       <SubType>Designer</SubType>
     </None>

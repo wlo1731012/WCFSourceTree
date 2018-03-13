@@ -182,7 +182,6 @@ namespace WCFServiceHostForm//WCFServiceHostForm
                 }
                 this.rtbHistory.AppendText(person.UserName + " : " + person.ChatContent + "\n"); // Add text into ChatBoard
             }
-            
         }
 
         private void lsbUserList_SelectedIndexChanged(object sender, EventArgs e)

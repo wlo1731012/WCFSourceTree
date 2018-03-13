@@ -34,6 +34,7 @@ namespace WCFService
         public static event ListenerHandler_ReceiveFile listenerHandler_ReceiveFile = null;
 
         public FileStream fileStream;
+        public static MemoryStream ms;
 
         public Service1()
         {
@@ -203,7 +204,7 @@ namespace WCFService
             }
         }
 
-        public MemoryStream SendFile(ServiceFile ClientAsked, MemoryStream ms)
+        public void SendFile(ref ServiceFile ClientAsked)
         {
             _filePath = ClientAsked.FilePath;
             
@@ -215,14 +216,15 @@ namespace WCFService
             ClientAsked.FileSize = sendFileInfo.FileSize;
 
             //ClientAsked.BytesRead = sendFileInfo.Stream.Read(tmp, ClientAsked.BytesRead, ClientAsked.BufferSize);
-            using (ms)
+            MemoryStream memoryStream = new MemoryStream();
+            using (memoryStream)
             {
                 while ((ClientAsked.BytesRead = sendFileInfo.Stream.Read(ClientAsked.Buffer, 0, ClientAsked.BufferSize)) > 0)
                 {
-                    ms.Write(ClientAsked.Buffer, 0, ClientAsked.BytesRead);
+                    memoryStream.Write(ClientAsked.Buffer, 0, ClientAsked.BytesRead);
                 }
             }
-            return ms;
+            ClientAsked.memoryStream = memoryStream;
             //if (ClientAsked.BytesRead != ClientAsked.BufferSize)
             //{
             //    ClientAsked.isFinsishFlag = true;

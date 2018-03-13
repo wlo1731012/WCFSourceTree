@@ -26,7 +26,7 @@ namespace WCFService
         [OperationContract]
         void ReceiveFile(ClientFile clientFile, bool isChangeFileName);
         [OperationContract(IsOneWay = false)]
-        MemoryStream SendFile(ServiceFile ClientAsked, MemoryStream tmp);
+        void SendFile(ref ServiceFile ClientAsked);
 
     }
     public interface ICallBackServices
@@ -83,8 +83,6 @@ namespace WCFService
         [DataMember]
         public byte[] Buffer; // Tranported onformation once
         [DataMember]
-        public int BufferSize; // Size of tranported onformation once
-        [DataMember]
         public bool isFinsishFlag;
     }
 
@@ -105,5 +103,7 @@ namespace WCFService
         public int BufferSize; // Size of tranported onformation once
         [DataMember]
         public bool isFinsishFlag;
+        [DataMember]
+        public MemoryStream memoryStream;
     }
 }

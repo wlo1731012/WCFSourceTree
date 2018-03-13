@@ -26,8 +26,6 @@
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="262539a9-ffb1-4b9a-9e8e-38adb7805753" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
     <MetadataFile FileName="WCFService.xsd" MetadataType="Schema" ID="f76067bd-4b5f-409b-86b7-e3577244078d" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
     <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="ebebddae-efed-4d38-8e18-8e1c2be4f641" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
-    <MetadataFile FileName="System.IO.xsd" MetadataType="Schema" ID="426f4646-9d09-4dc3-8020-1c8d1f44f7f1" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
-    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="ee9567e0-20fe-44bd-8a6c-9d508a243200" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
     <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="ad2557df-0431-4562-9dcb-7863e2bbc45a" SourceId="1" SourceUrl="net.tcp://10.201.41.88:8732//WCFService/Service1/mex" />
   </Metadata>
   <Extensions>

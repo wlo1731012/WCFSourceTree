@@ -94,18 +94,19 @@ namespace WCFClient
         private void btnUpload_Click(object sender, EventArgs e)
         {
             string filePath = OpenDialog();
-            string usingTime = "";
-            int bufferSize = 300000;
-            List<string> usingTimeList = new List<string>();
+            
             if (filePath != "")
             {
                 int roundCount = 0;
                 int timesCount = 0;
                 Stopwatch sw_total = new Stopwatch();
                 Stopwatch sw_step = new Stopwatch();
+                string usingTime = "";
+                List<string> usingTimeList = new List<string>();
 
                 ClientFile clientFile = new ClientFile();
                 clientFile.ClientName = txtUserName.Text;
+                int bufferSize = 3000000;
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -139,7 +140,6 @@ namespace WCFClient
 
                         clientFile.BytesRead = sendFileInfo.Stream.Read(clientFile.Buffer, 0, clientFile.Buffer.Length);
                         clientFile.FileName = sendFileInfo.FileName;
-                        clientFile.BufferSize = clientFile.Buffer.Length;
                         clientFile.isFinsishFlag = false;
 
                         service.ReceiveFile(clientFile, isChangeFileName);
@@ -198,11 +198,11 @@ namespace WCFClient
 
             fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
 
-                int a = service.SendFile(ClientAsked, ref memoryStream);
+                service.SendFile(ref ClientAsked);
 
                 byte[] tmp = new byte[ClientAsked.FileSize];
-                tmp = memoryStream.ToArray();
-                fileStream.Write(tmp, 0, ClientAsked.BufferSize);
+                tmp = ClientAsked.memoryStream.ToArray();
+                fileStream.Write(tmp, 0, Convert.ToInt32(ClientAsked.FileSize));
 
                 //tillCurrentBytesRead += ClientAsked.BytesRead;
                 //currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
