@@ -30,6 +30,9 @@ namespace WCFClient.netTCPServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReceiveFile", ReplyAction="http://tempuri.org/IService1/ReceiveFileResponse")]
         void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OpenServiceDialog", ReplyAction="http://tempuri.org/IService1/OpenServiceDialogResponse")]
+        void OpenServiceDialog(ref string filePath);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendFile", ReplyAction="http://tempuri.org/IService1/SendFileResponse")]
         void SendFile(ref WCFService.ServiceFile ClientAsked);
     }
@@ -93,6 +96,10 @@ namespace WCFClient.netTCPServiceReference {
         
         public void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName) {
             base.Channel.ReceiveFile(clientFile, isChangeFileName);
+        }
+        
+        public void OpenServiceDialog(ref string filePath) {
+            base.Channel.OpenServiceDialog(ref filePath);
         }
         
         public void SendFile(ref WCFService.ServiceFile ClientAsked) {

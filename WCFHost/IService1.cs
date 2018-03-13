@@ -20,8 +20,6 @@ namespace WCFService
 
         [OperationContract]
         DataSet GetFileList(string filePath); 
-        [OperationContract]
-        byte[] GetPic(string dilePath, string fileName, int offSet, int blockSize);
 
         [OperationContract]
         void ReceiveFile(ClientFile clientFile, bool isChangeFileName);
@@ -92,8 +90,6 @@ namespace WCFService
         [DataMember]
         public string FilePath;
         [DataMember]
-        public string ClientName;
-        [DataMember]
         public int BytesRead;
         [DataMember]
         public long FileSize;
@@ -102,8 +98,6 @@ namespace WCFService
         [DataMember]
         public int BufferSize; // Size of tranported onformation once
         [DataMember]
-        public bool isFinsishFlag;
-        [DataMember]
-        public MemoryStream memoryStream;
+        public bool isFirstTime;
     }
 }

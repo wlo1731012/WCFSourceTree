@@ -41,7 +41,7 @@
             // 
             // btnChat
             // 
-            this.btnChat.Location = new System.Drawing.Point(307, 807);
+            this.btnChat.Location = new System.Drawing.Point(306, 545);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(74, 27);
             this.btnChat.TabIndex = 0;
@@ -62,14 +62,14 @@
             this.rtbHistory.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.rtbHistory.Location = new System.Drawing.Point(119, 50);
             this.rtbHistory.Name = "rtbHistory";
-            this.rtbHistory.Size = new System.Drawing.Size(422, 751);
+            this.rtbHistory.Size = new System.Drawing.Size(422, 489);
             this.rtbHistory.TabIndex = 11;
             this.rtbHistory.Text = "";
             this.rtbHistory.TextChanged += new System.EventHandler(this.rtbHistory_TextChanged);
             // 
             // txtChat
             // 
-            this.txtChat.Location = new System.Drawing.Point(119, 807);
+            this.txtChat.Location = new System.Drawing.Point(118, 545);
             this.txtChat.Name = "txtChat";
             this.txtChat.Size = new System.Drawing.Size(182, 22);
             this.txtChat.TabIndex = 9;
@@ -90,13 +90,13 @@
             this.lsbUserList.ItemHeight = 12;
             this.lsbUserList.Location = new System.Drawing.Point(12, 50);
             this.lsbUserList.Name = "lsbUserList";
-            this.lsbUserList.Size = new System.Drawing.Size(100, 808);
+            this.lsbUserList.Size = new System.Drawing.Size(100, 544);
             this.lsbUserList.TabIndex = 12;
             this.lsbUserList.SelectedIndexChanged += new System.EventHandler(this.lsbUserList_SelectedIndexChanged);
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(387, 807);
+            this.btnUpload.Location = new System.Drawing.Point(386, 545);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(74, 27);
             this.btnUpload.TabIndex = 13;
@@ -106,14 +106,14 @@
             // 
             // pgbReadFile
             // 
-            this.pgbReadFile.Location = new System.Drawing.Point(119, 835);
+            this.pgbReadFile.Location = new System.Drawing.Point(118, 573);
             this.pgbReadFile.Name = "pgbReadFile";
             this.pgbReadFile.Size = new System.Drawing.Size(421, 23);
             this.pgbReadFile.TabIndex = 14;
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(467, 807);
+            this.btnDownload.Location = new System.Drawing.Point(466, 545);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(74, 27);
             this.btnDownload.TabIndex = 15;
@@ -125,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 870);
+            this.ClientSize = new System.Drawing.Size(552, 607);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.pgbReadFile);
             this.Controls.Add(this.btnUpload);

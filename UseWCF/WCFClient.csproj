@@ -61,6 +61,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ServiceFileListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceFileListForm.Designer.cs">
+      <DependentUpon>ServiceFileListForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +80,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ServiceFileListForm.resx">
+      <DependentUpon>ServiceFileListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

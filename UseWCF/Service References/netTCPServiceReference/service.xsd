@@ -84,6 +84,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="OpenServiceDialog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="filePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OpenServiceDialogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="filePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SendFile">
     <xs:complexType>
       <xs:sequence>

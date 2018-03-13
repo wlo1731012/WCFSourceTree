@@ -1,7 +1,3 @@
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.pdb
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.dll
-D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\WCFHost\bin\Debug\WCFService.dll
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\WCFHost\bin\Debug\WCFService.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180309\WCFHost\obj\Debug\WCFService.dll
@@ -10,3 +6,7 @@ D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Deb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\bin\Debug\WCFService.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFService.dll
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost\WCFHost\obj\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.pdb

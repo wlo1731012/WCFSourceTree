@@ -22,10 +22,9 @@
       <xs:element minOccurs="0" name="Buffer" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="BufferSize" type="xs:int" />
       <xs:element minOccurs="0" name="BytesRead" type="xs:int" />
-      <xs:element minOccurs="0" name="ClientName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileSize" type="xs:long" />
-      <xs:element minOccurs="0" name="isFinsishFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isFirstTime" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceFile" nillable="true" type="tns:ServiceFile" />

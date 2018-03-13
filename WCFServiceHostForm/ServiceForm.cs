@@ -30,7 +30,6 @@ namespace WCFServiceHostForm//WCFServiceHostForm
             host.Open(); // Start Listening
             
             Service1.listenerHandler_ReceiveFile += new Service1.ListenerHandler_ReceiveFile(ReceiveFile);
-           // Service1.listenerHandler_SendFile += new Service1.ListenerHandler_SendFile(SendFile);
 
             #region Thread Working
 
@@ -136,23 +135,6 @@ namespace WCFServiceHostForm//WCFServiceHostForm
                     this.rtbHistory.SelectionColor = Color.White;
                 }));
             }
-        }
-        private string SendFile()
-        {
-            return OpenDialog();
-        }
-
-        private string OpenDialog()
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select file";
-            dialog.InitialDirectory = ".\\";
-            dialog.Filter = "all files (*.*)|*.*";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-                return dialog.FileName;
-            else
-                return "";
         }
 
         #region Toolbox Event

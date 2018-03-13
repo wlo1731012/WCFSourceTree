@@ -7,6 +7,8 @@ using System.IO;
 using System.Threading;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Data;
+using WCFClient;
 
 namespace WCFClient
 {
@@ -31,6 +33,7 @@ namespace WCFClient
             btnLogin.Enabled = false;
             btnChat.Enabled = false;
             btnUpload.Enabled = false;
+            btnDownload.Enabled = false;
             rtbHistory.Enabled = false;
             lsbUserList.Enabled = false;
             txtChat.Enabled = false;
@@ -45,6 +48,7 @@ namespace WCFClient
 
             btnChat.Enabled = true;
             btnUpload.Enabled = true;
+            btnDownload.Enabled = true;
             rtbHistory.Enabled = true;
             lsbUserList.Enabled = true;
             txtChat.Enabled = true;
@@ -184,32 +188,45 @@ namespace WCFClient
             }
         }
 
+        public static DataSet serviceFileList = new DataSet();
         private void btnDownload_Click(object sender, EventArgs e)
         {
             ServiceFile ClientAsked = new ServiceFile();
-            string saveFilePath = "D:\\FolderDownload\\Service_AddNewUser.JPG";
-            double currentProgress = 0;
-            int tillCurrentBytesRead=0;
-            ClientAsked.BufferSize = 30000;
-            //ClientAsked.Buffer = new byte[ClientAsked.BufferSize];
-            ClientAsked.ClientName = txtUserName.Text;
-            ClientAsked.FilePath = "D:\\Folder2\\AddNewUser.JPG";
-            MemoryStream memoryStream = new MemoryStream();
+            serviceFileList = service.GetFileList("D:\\Folder1"); // Set folder that make client READ
 
-            fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            ServiceFileListForm serviceFileListForm = new ServiceFileListForm();
+            serviceFileListForm.ShowDialog();
 
-                service.SendFile(ref ClientAsked);
+            if (serviceFileListForm.selectedFile != "")
+            {
+                ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileListForm.selectedFile;
 
-                byte[] tmp = new byte[ClientAsked.FileSize];
-                tmp = ClientAsked.memoryStream.ToArray();
-                fileStream.Write(tmp, 0, Convert.ToInt32(ClientAsked.FileSize));
+                FolderBrowserDialog browsePath = new FolderBrowserDialog(); // Open a dialog make client select where to save file
+                browsePath.ShowDialog();
+                string saveFilePath = browsePath.SelectedPath;
 
-                //tillCurrentBytesRead += ClientAsked.BytesRead;
-                //currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
-                //pgbReadFile.Value = Convert.ToInt32(currentProgress);
+                if (saveFilePath != "")
+                {
+                    saveFilePath += "\\" + serviceFileListForm.selectedFile;
+                    double currentProgress = 0;
+                    int tillCurrentBytesRead = 0; // Current sum of bytes been read
+                    ClientAsked.BufferSize = 30000;
+                    ClientAsked.isFirstTime = true; // Make file open until read file over
 
-            
-            fileStream.Close();
+                    fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
+                    do
+                    {
+                        service.SendFile(ref ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
+                        fileStream.Write(ClientAsked.Buffer, 0, ClientAsked.Buffer.Length); // Write  part of file information into File
+
+                        tillCurrentBytesRead += ClientAsked.BytesRead;
+                        currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
+                        pgbReadFile.Value = Convert.ToInt32(currentProgress);
+                    } while (currentProgress != 100);
+
+                    fileStream.Close(); // Close File makes it rest in peace
+                }
+            }
         }
 
         private void txtUserName_TextChanged(object sender, EventArgs e)
@@ -263,19 +280,19 @@ namespace WCFClient
 
         }
 
-         private string OpenDialog()
+        private string OpenDialog()
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Select file";
-            dialog.InitialDirectory = ".\\";
-            dialog.Filter = "all files (*.*)|*.*";
+            dialog.InitialDirectory = @"D:\";
+            dialog.Filter = "all files(*.*)|*.*";
 
             if (dialog.ShowDialog() == DialogResult.OK)
                 return dialog.FileName;
             else
                 return "";
         }
-
+       
         #region CallBack function using
 
         #region Send Message Type

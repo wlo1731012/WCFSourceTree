@@ -17,7 +17,6 @@ namespace WCFService
     {
         private List<string> _userList = new List<string>();
         private string _filePath = "";
-        private ICallBackServices _callBack;
 
         public static Dictionary<string, ICallBackServices> DicHostSessionid = new Dictionary<string,ICallBackServices>();// Record client's session id and CallBack
         public static Dictionary<string, string> DicHostUserid = new Dictionary<string,string>();// Record client's user name and session id
@@ -90,6 +89,7 @@ namespace WCFService
 
             isSendMessage = true;
         }
+
         /// <summary>
         /// Get File data with type of list
         /// </summary>
@@ -98,6 +98,7 @@ namespace WCFService
         public DataSet GetFileList(string filePath)
         {
             DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("FileFullPath");
             dataTable.Columns.Add("FileName");
             dataTable.Columns.Add("FileExtension");
             dataTable.Columns.Add("FileSize");
@@ -106,7 +107,8 @@ namespace WCFService
             {
                 FileInfo fileInfo = new FileInfo(fileSystemInfo.FullName); // Get file's information
                 DataRow dataRow = dataTable.NewRow();
-                dataRow["FileName"] = fileSystemInfo.FullName;
+                dataRow["FileFullPath"] = fileSystemInfo.FullName;
+                dataRow["FileName"] = fileSystemInfo.Name;
                 dataRow["FileExtension"] = fileSystemInfo.Extension;
                 dataRow["FileSize"] = fileInfo.Length;
                 dataTable.Rows.Add(dataRow);
@@ -114,41 +116,6 @@ namespace WCFService
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add(dataTable);
             return dataSet;
-        }
-
-        ///<summary>
-        /// Get picture Data
-        /// </summary> 
-        /// <param name="fileName">Downloading file name</param> 
-        /// <param name="offSet">Location</param> 
-        /// <param name="blockSize">Download data size per once</param> 
-        /// <returns>byte[], </returns> 
-        public byte[] GetPic(string filePath, string fileName, int offSet, int blockSize)
-        {
-            try
-            {
-                byte[] picByte;
-                using(FileStream fileStream = new FileStream(Path.Combine(@filePath, fileName),FileMode.Open,FileAccess.Read,FileShare.ReadWrite))
-                {
-                    fileStream.Seek(offSet, SeekOrigin.Begin);
-
-                    if ((offSet + blockSize) > fileStream.Length) // If asked download size is bigger than fileStream's size, reduce asked size.
-                        blockSize = Convert.ToInt32(fileStream.Length - offSet);
-                    if (blockSize <= 0) // If ask nothing, return 0
-                    {
-                        picByte = new byte[0];
-                        return picByte;
-                    }
-                    picByte = new byte[blockSize];
-                    fileStream.Read(picByte, 0, blockSize); // Read a block of bytes size (blocksize) from fileStream and writes the data into buffer (picByte)
-                    fileStream.Close(); // Close fileStream
-                }
-                    return picByte;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            } 
         }
 
 
@@ -203,35 +170,24 @@ namespace WCFService
                 fileStream.Write(clientFile.Buffer, 0, clientFile.BytesRead);
             }
         }
-
+                
+        private MyFileInfo _sendFileInfo;
         public void SendFile(ref ServiceFile ClientAsked)
         {
-            _filePath = ClientAsked.FilePath;
-            
-            string[] splitString = _filePath.Split('\\');
-            FileInfo fileInfo = new FileInfo(_filePath); // Get file Length
-            MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(_filePath), splitString[splitString.Length - 1], fileInfo.Length);
+            if (ClientAsked.isFirstTime == true) // Active once
+            {
+                _filePath = ClientAsked.FilePath; // FilePath that client want
+                string[] splitString = _filePath.Split('\\');
+                FileInfo fileInfo = new FileInfo(_filePath); // Get file Length
+                _sendFileInfo = new MyFileInfo(File.OpenRead(_filePath), splitString[splitString.Length - 1], fileInfo.Length);
+                ClientAsked.isFirstTime = false;
+            }
             
             ClientAsked.Buffer = new byte[ClientAsked.BufferSize];
-            ClientAsked.FileSize = sendFileInfo.FileSize;
+            ClientAsked.FileSize = _sendFileInfo.FileSize; // For progress bar value count
 
-            //ClientAsked.BytesRead = sendFileInfo.Stream.Read(tmp, ClientAsked.BytesRead, ClientAsked.BufferSize);
-            MemoryStream memoryStream = new MemoryStream();
-            using (memoryStream)
-            {
-                while ((ClientAsked.BytesRead = sendFileInfo.Stream.Read(ClientAsked.Buffer, 0, ClientAsked.BufferSize)) > 0)
-                {
-                    memoryStream.Write(ClientAsked.Buffer, 0, ClientAsked.BytesRead);
-                }
-            }
-            ClientAsked.memoryStream = memoryStream;
-            //if (ClientAsked.BytesRead != ClientAsked.BufferSize)
-            //{
-            //    ClientAsked.isFinsishFlag = true;
-            //}
-
-            //return ClientAsked.Buffer;
-
+            ClientAsked.BytesRead = _sendFileInfo.Stream.Read(ClientAsked.Buffer, 0, ClientAsked.BufferSize); // Read part of file save into buffer and return how much bytes be read this time into ClientAsked.BytesRead
+            
         }
 
         private string CheckFileName(string filePath)
@@ -252,7 +208,5 @@ namespace WCFService
             }
         }
 
-        
-        
     }
 }
