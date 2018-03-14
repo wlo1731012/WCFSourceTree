@@ -98,94 +98,142 @@ namespace WCFClient
         private void btnUpload_Click(object sender, EventArgs e)
         {
             string filePath = OpenDialog();
-            
+
             if (filePath != "")
             {
-                int roundCount = 0;
-                int timesCount = 0;
-                Stopwatch sw_total = new Stopwatch();
-                Stopwatch sw_step = new Stopwatch();
-                string usingTime = "";
-                List<string> usingTimeList = new List<string>();
-
                 ClientFile clientFile = new ClientFile();
                 clientFile.ClientName = txtUserName.Text;
+
                 int bufferSize = 3000000;
+                double currentProgress = 0;
+                long totalBytesRead = 0;
+                bool isChangeFileName = false;
 
-                for (int i = 0; i < 3; i++)
+                string[] splitString = filePath.Split('\\');
+                FileInfo fileInfo = new FileInfo(filePath); // Get file Length
+                MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(filePath), splitString[splitString.Length - 1], fileInfo.Length);
+
+                clientFile.Buffer = new byte[bufferSize]; // In C#, if u give byte array a new assign, it will release orgin space that u used automatically by GC(Garbage Collection).
+                clientFile.FileName = sendFileInfo.FileName;
+
+                do
                 {
-                    sw_total.Reset();
-                    sw_step.Reset();
-                    sw_total.Start();
-                    sw_step.Start();
+                    clientFile.BytesRead = sendFileInfo.Stream.Read(clientFile.Buffer, 0, clientFile.Buffer.Length);
+                    clientFile.isFinsishFlag = false;
 
-                    roundCount = 0;
+                    service.ReceiveFile(clientFile, isChangeFileName);
 
-                    bool isChangeFileName = false;
-                    long totalBytesRead = 0;
-                    double currentProgress = 0;
-                    
-                    string[] splitString = filePath.Split('\\');
-                    FileInfo fileInfo = new FileInfo(filePath); // Get file Length
-                    MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(filePath), splitString[splitString.Length - 1], fileInfo.Length);
+                    isChangeFileName = true;
+                    totalBytesRead += clientFile.BytesRead;
 
-                    clientFile.Buffer = new byte[bufferSize]; // In C#, if u give byte array a new assign, it will release orgin space that u used automatically by GC(Garbage Collection).
-                    
-                    timesCount++;
-                    rtbHistory.AppendText("\n-----No. " + timesCount.ToString() + " transport " + sendFileInfo.FileName + "-----\n\n");
-                    sw_step.Stop();
-                    usingTime = sw_step.Elapsed.TotalMilliseconds.ToString();
-                    rtbHistory.AppendText("Assign Time : "+ usingTime + "\n");
+                    if (sendFileInfo.FileSize != 0)
+                        currentProgress = (((double)totalBytesRead) / sendFileInfo.FileSize) * 100;
+                    else
+                        currentProgress = 100;
 
-                    do
+                    pgbReadFile.Value = Convert.ToInt32(currentProgress);
+                    if (currentProgress == 100)
                     {
-                        sw_step.Reset();
-                        sw_step.Start();
+                        clientFile.isFinsishFlag = true;
+                        service.ReceiveFile(clientFile, isChangeFileName); // Call again make service file close
+                    }
+                } while (currentProgress != 100);//== buffer.Length
 
-                        clientFile.BytesRead = sendFileInfo.Stream.Read(clientFile.Buffer, 0, clientFile.Buffer.Length);
-                        clientFile.FileName = sendFileInfo.FileName;
-                        clientFile.isFinsishFlag = false;
 
-                        service.ReceiveFile(clientFile, isChangeFileName);
-
-                        isChangeFileName = true;
-                        totalBytesRead += clientFile.BytesRead;
-
-                        if (sendFileInfo.FileSize != 0)
-                            currentProgress = (((double)totalBytesRead) / sendFileInfo.FileSize) * 100;
-                        else
-                            currentProgress = 100;
-
-                        pgbReadFile.Value = Convert.ToInt32(currentProgress);
-                        if (currentProgress == 100)
-                        {
-                            clientFile.isFinsishFlag = true;
-                            service.ReceiveFile(clientFile, isChangeFileName);
-                        }
-
-                        roundCount++;
-                        sw_step.Stop();
-                        usingTime = sw_step.Elapsed.TotalMilliseconds.ToString();
-                        rtbHistory.AppendText("Round " + roundCount.ToString() + " Time : " + usingTime + "\n");
-
-                    } while (currentProgress != 100);//== buffer.Length
-                    
-                    sw_total.Stop();
-                    usingTime = sw_total.Elapsed.TotalMilliseconds.ToString();
-                    rtbHistory.AppendText("\nUsing total time : " + usingTime + "\n");//"Transport" + clientFile .FileName + " successful\nTotal using time : " +  ms
-                    usingTimeList.Add(usingTime);
-                    //Array.Clear(clientFile.Buffer, 0, bufferSize);
-                }
-
+                rtbHistory.AppendText("- Upload \"" + clientFile.FileName + "\" success -");
                 rtbHistory.AppendText("\n---------------------------------------------------------\n");
-                for (int i = 1; i < usingTimeList.Count+1; i++)
-                {
-                    rtbHistory.AppendText("-No. " + i.ToString() + " transport " + usingTimeList[i-1] + " ms-\n");
-                }
-
                 back.SetForm(this);
-                //service.ReceiveFile(clientFile, finishFlag);
             }
+
+            #region Test Time
+            //string filePath = OpenDialog();
+
+            //if (filePath != "")
+            //{
+            //    int roundCount = 0;
+            //    int timesCount = 0;
+            //    Stopwatch sw_total = new Stopwatch();
+            //    Stopwatch sw_step = new Stopwatch();
+            //    string usingTime = "";
+            //    List<string> usingTimeList = new List<string>();
+
+            //    ClientFile clientFile = new ClientFile();
+            //    clientFile.ClientName = txtUserName.Text;
+            //    int bufferSize = 3000000;
+
+            //    for (int i = 0; i < 3; i++)
+            //    {
+            //        sw_total.Reset();
+            //        sw_step.Reset();
+            //        sw_total.Start();
+            //        sw_step.Start();
+
+            //        roundCount = 0;
+
+            //        bool isChangeFileName = false;
+            //        long totalBytesRead = 0;
+            //        double currentProgress = 0;
+
+            //        string[] splitString = filePath.Split('\\');
+            //        FileInfo fileInfo = new FileInfo(filePath); // Get file Length
+            //        MyFileInfo sendFileInfo = new MyFileInfo(File.OpenRead(filePath), splitString[splitString.Length - 1], fileInfo.Length);
+
+            //        clientFile.Buffer = new byte[bufferSize]; // In C#, if u give byte array a new assign, it will release orgin space that u used automatically by GC(Garbage Collection).
+
+            //        timesCount++;
+            //        rtbHistory.AppendText("\n-----No. " + timesCount.ToString() + " transport " + sendFileInfo.FileName + "-----\n\n");
+            //        sw_step.Stop();
+            //        usingTime = sw_step.Elapsed.TotalMilliseconds.ToString();
+            //        rtbHistory.AppendText("Assign Time : " + usingTime + "\n");
+
+            //        do
+            //        {
+            //            sw_step.Reset();
+            //            sw_step.Start();
+
+            //            clientFile.BytesRead = sendFileInfo.Stream.Read(clientFile.Buffer, 0, clientFile.Buffer.Length);
+            //            clientFile.FileName = sendFileInfo.FileName;
+            //            clientFile.isFinsishFlag = false;
+
+            //            service.ReceiveFile(clientFile, isChangeFileName);
+
+            //            isChangeFileName = true;
+            //            totalBytesRead += clientFile.BytesRead;
+
+            //            if (sendFileInfo.FileSize != 0)
+            //                currentProgress = (((double)totalBytesRead) / sendFileInfo.FileSize) * 100;
+            //            else
+            //                currentProgress = 100;
+
+            //            pgbReadFile.Value = Convert.ToInt32(currentProgress);
+            //            if (currentProgress == 100)
+            //            {
+            //                clientFile.isFinsishFlag = true;
+            //                service.ReceiveFile(clientFile, isChangeFileName);
+            //            }
+
+            //            roundCount++;
+            //            sw_step.Stop();
+            //            usingTime = sw_step.Elapsed.TotalMilliseconds.ToString();
+            //            rtbHistory.AppendText("Round " + roundCount.ToString() + " Time : " + usingTime + "\n");
+
+            //        } while (currentProgress != 100);//== buffer.Length
+
+            //        sw_total.Stop();
+            //        usingTime = sw_total.Elapsed.TotalMilliseconds.ToString();
+            //        rtbHistory.AppendText("\nUsing total time : " + usingTime + "\n");//"Transport" + clientFile .FileName + " successful\nTotal using time : " +  ms
+            //        usingTimeList.Add(usingTime);
+            //    }
+
+            //    rtbHistory.AppendText("\n---------------------------------------------------------\n");
+            //    for (int i = 1; i < usingTimeList.Count + 1; i++)
+            //    {
+            //        rtbHistory.AppendText("-No. " + i.ToString() + " transport " + usingTimeList[i - 1] + " ms-\n");
+            //    }
+
+            //    back.SetForm(this);
+            //}
+            #endregion
         }
 
         public static DataSet serviceFileList = new DataSet();
@@ -196,21 +244,22 @@ namespace WCFClient
 
             ServiceFileListForm serviceFileListForm = new ServiceFileListForm();
             serviceFileListForm.ShowDialog();
+            string serviceFileName = serviceFileListForm.selectedFile;
 
-            if (serviceFileListForm.selectedFile != "")
+            if (serviceFileName != "")
             {
-                ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileListForm.selectedFile;
+                ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileName;
 
                 FolderBrowserDialog browsePath = new FolderBrowserDialog(); // Open a dialog make client select where to save file
                 browsePath.ShowDialog();
-                string saveFilePath = browsePath.SelectedPath;
 
-                if (saveFilePath != "")
+                if (browsePath.SelectedPath != "")
                 {
-                    saveFilePath += "\\" + serviceFileListForm.selectedFile;
+                    string saveFilePath = browsePath.SelectedPath + "\\" + serviceFileName;
+                    saveFilePath = CheckFilePath(saveFilePath);
                     double currentProgress = 0;
                     int tillCurrentBytesRead = 0; // Current sum of bytes been read
-                    ClientAsked.BufferSize = 30000;
+                    ClientAsked.BufferSize = 3000000;
                     ClientAsked.isFirstTime = true; // Make file open until read file over
 
                     fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
@@ -226,9 +275,88 @@ namespace WCFClient
 
                     fileStream.Close(); // Close File makes it rest in peace
                 }
+                rtbHistory.AppendText("- Download \"" + serviceFileName + "\" success -");
+                rtbHistory.AppendText("\n---------------------------------------------------------\n");
+            }
+
+            #region Test Time
+            //Stopwatch sw_total = new Stopwatch();
+            //ServiceFile ClientAsked = new ServiceFile();
+            //serviceFileList = service.GetFileList("D:\\Folder1"); // Set folder that make client READ
+
+            //ServiceFileListForm serviceFileListForm = new ServiceFileListForm();
+            //serviceFileListForm.ShowDialog();
+            //string serviceFileName = serviceFileListForm.selectedFile;
+
+            //if (serviceFileName != "")
+            //{
+            //    for (int i = 0; i < 3; i++)
+            //    {
+            //        sw_total.Reset();
+            //        sw_total.Start();
+            //        ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileName;
+
+            //        string saveFilePath = "D:\\FolderDownload" + "\\" + serviceFileName;
+            //        if (saveFilePath != "\\" + serviceFileName)
+            //        {
+            //            saveFilePath = CheckFilePath(saveFilePath);
+            //            double currentProgress = 0;
+            //            int tillCurrentBytesRead = 0; // Current sum of bytes been read
+            //            ClientAsked.BufferSize = 3000000;
+            //            ClientAsked.isFirstTime = true; // Make file open until read file over
+
+            //            fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
+            //            do
+            //            {
+            //                service.SendFile(ref ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
+            //                fileStream.Write(ClientAsked.Buffer, 0, ClientAsked.Buffer.Length); // Write  part of file information into File
+
+            //                tillCurrentBytesRead += ClientAsked.BytesRead;
+            //                currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
+            //                pgbReadFile.Value = Convert.ToInt32(currentProgress);
+            //            } while (currentProgress != 100);
+
+            //            fileStream.Close(); // Close File makes it rest in peace
+            //        }
+            //        sw_total.Stop();
+            //        rtbHistory.AppendText("-No. " + (i + 1).ToString() + " transport " + sw_total.Elapsed.TotalMilliseconds.ToString() + " ms-\n");
+            //    }
+            //    rtbHistory.AppendText("\n---------------------------------------------------------\n");
+            //}
+            #endregion
+        }
+
+        private string CheckFilePath(string filePath)
+        {
+            string _filePath = filePath;
+            string[] splitPath = _filePath.Split('.');
+            string extensionName = "." + splitPath[splitPath.Length - 1];
+            int nameCount = 0;
+            while (true)
+            {
+                if (File.Exists(_filePath) == true)
+                {
+                    nameCount++;
+                    _filePath = filePath.Substring(0, filePath.Length - extensionName.Length) + "_" + nameCount.ToString() + extensionName;// - 1 for counting position
+                }
+                else
+                    return _filePath;
             }
         }
 
+        private string OpenDialog()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select file";
+            dialog.InitialDirectory = @"D:\Folder1";
+            dialog.Filter = "all files(*.*)|*.*";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+                return dialog.FileName;
+            else
+                return "";
+        }
+        
         private void txtUserName_TextChanged(object sender, EventArgs e)
         {
             if (txtUserName.Text != "")
@@ -280,18 +408,7 @@ namespace WCFClient
 
         }
 
-        private string OpenDialog()
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select file";
-            dialog.InitialDirectory = @"D:\";
-            dialog.Filter = "all files(*.*)|*.*";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-                return dialog.FileName;
-            else
-                return "";
-        }
+        
        
         #region CallBack function using
 

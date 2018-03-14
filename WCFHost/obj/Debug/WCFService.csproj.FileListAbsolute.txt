@@ -10,3 +10,7 @@ D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\b
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\bin\Debug\WCFService.pdb
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.dll
 D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFSourceTree\WCFHost\obj\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180314\WCFHost\bin\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180314\WCFHost\bin\Debug\WCFService.pdb
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180314\WCFHost\obj\Debug\WCFService.dll
+D:\Users\hmi106722\Documents\Visual Studio 2010\Projects\WCFHost - 180314\WCFHost\obj\Debug\WCFService.pdb
