@@ -24,17 +24,14 @@ namespace WCFClient.netTCPServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFileList", ReplyAction="http://tempuri.org/IService1/GetFileListResponse")]
         System.Data.DataSet GetFileList(string filePath);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPic", ReplyAction="http://tempuri.org/IService1/GetPicResponse")]
-        byte[] GetPic(string dilePath, string fileName, int offSet, int blockSize);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ReceiveFile", ReplyAction="http://tempuri.org/IService1/ReceiveFileResponse")]
         void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OpenServiceDialog", ReplyAction="http://tempuri.org/IService1/OpenServiceDialogResponse")]
-        void OpenServiceDialog(ref string filePath);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SendFile", ReplyAction="http://tempuri.org/IService1/SendFileResponse")]
         void SendFile(ref WCFService.ServiceFile ClientAsked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Test", ReplyAction="http://tempuri.org/IService1/TestResponse")]
+        WCFService.ServiceFile Test(WCFService.ServiceFile ClientAsked);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -90,20 +87,16 @@ namespace WCFClient.netTCPServiceReference {
             return base.Channel.GetFileList(filePath);
         }
         
-        public byte[] GetPic(string dilePath, string fileName, int offSet, int blockSize) {
-            return base.Channel.GetPic(dilePath, fileName, offSet, blockSize);
-        }
-        
         public void ReceiveFile(WCFService.ClientFile clientFile, bool isChangeFileName) {
             base.Channel.ReceiveFile(clientFile, isChangeFileName);
         }
         
-        public void OpenServiceDialog(ref string filePath) {
-            base.Channel.OpenServiceDialog(ref filePath);
-        }
-        
         public void SendFile(ref WCFService.ServiceFile ClientAsked) {
             base.Channel.SendFile(ref ClientAsked);
+        }
+        
+        public WCFService.ServiceFile Test(WCFService.ServiceFile ClientAsked) {
+            return base.Channel.Test(ClientAsked);
         }
     }
 }

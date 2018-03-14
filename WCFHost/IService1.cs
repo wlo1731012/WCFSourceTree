@@ -23,8 +23,10 @@ namespace WCFService
 
         [OperationContract]
         void ReceiveFile(ClientFile clientFile, bool isChangeFileName);
-        [OperationContract(IsOneWay = false)]
+        [OperationContract]
         void SendFile(ref ServiceFile ClientAsked);
+        [OperationContract]
+        ServiceFile Test(ServiceFile ClientAsked);
 
     }
     public interface ICallBackServices

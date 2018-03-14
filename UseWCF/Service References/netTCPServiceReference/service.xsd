@@ -54,23 +54,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPic">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="dilePath" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="offSet" type="xs:int" />
-        <xs:element minOccurs="0" name="blockSize" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetPicResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetPicResult" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="ReceiveFile">
     <xs:complexType>
       <xs:sequence>
@@ -82,20 +65,6 @@
   <xs:element name="ReceiveFileResponse">
     <xs:complexType>
       <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="OpenServiceDialog">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="filePath" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="OpenServiceDialogResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="filePath" nillable="true" type="xs:string" />
-      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendFile">
@@ -112,10 +81,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Test">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="ClientAsked" nillable="true" type="q5:ServiceFile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="TestResult" nillable="true" type="q6:ServiceFile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="person" nillable="true" type="q5:Person" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="person" nillable="true" type="q7:Person" />
         <xs:element minOccurs="0" name="contentType" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -123,14 +106,14 @@
   <xs:element name="UpdateUserList">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userList" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userList" nillable="true" type="q8:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateDownloadFile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="serviceFile" nillable="true" type="q7:ServiceFile" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="serviceFile" nillable="true" type="q9:ServiceFile" />
         <xs:element minOccurs="0" name="currentProgress" type="xs:double" />
       </xs:sequence>
     </xs:complexType>

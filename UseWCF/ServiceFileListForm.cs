@@ -13,7 +13,7 @@ namespace WCFClient
     public partial class ServiceFileListForm : Form
     {
         private DataSet _dataSet = new DataSet();
-
+        private string _chooseData = "";
         public string selectedFile = "";
 
         public ServiceFileListForm()
@@ -22,18 +22,26 @@ namespace WCFClient
 
             _dataSet = ClientForm.serviceFileList;
             DataTable dataTable = _dataSet.Tables[0].Copy();
-            for (var j = 0; j < dataTable.Rows.Count; j++)
+
+            dgvFileList.Columns[0].Name = "Name";
+            dgvFileList.Columns[1].Name = "Size";
+            dgvFileList.AutoResizeColumnHeadersHeight();
+            dgvFileList.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders);
+            dgvFileList.ReadOnly = true;
+            int fileSize = 0;
+            for (var i = 0; i < dataTable.Rows.Count; i++)
             {
-                lsbFileList.Items.Add(dataTable.Rows[j]["FileName"]);
+                fileSize = int.Parse(dataTable.Rows[i]["FileSize"].ToString());
+                dgvFileList.Rows.Add(dataTable.Rows[i]["FileName"], dataTable.Rows[i]["FileSize"]);
             }
-                
+            dgvFileList.AllowUserToAddRows = false;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (lsbFileList.SelectedItem != null)
+            if (_chooseData != null)
             {
-                selectedFile = lsbFileList.SelectedItem.ToString();
+                selectedFile = _chooseData;
                 this.Close();
             }
             else
@@ -43,6 +51,21 @@ namespace WCFClient
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvFileList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //_chooseData = dgvFileList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+        }
+
+        private void dgvFileList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _chooseData = dgvFileList.Rows[e.RowIndex].Cells[0].Value.ToString();
+        }
+
+        private void dgvFileList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //_chooseData = dgvFileList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
         }
     }
 }

@@ -208,5 +208,25 @@ namespace WCFService
             }
         }
 
+
+
+        public ServiceFile Test(ServiceFile ClientAsked)
+        {
+            if (ClientAsked.isFirstTime == true) // Active once
+            {
+                _filePath = ClientAsked.FilePath; // FilePath that client want
+                string[] splitString = _filePath.Split('\\');
+                FileInfo fileInfo = new FileInfo(_filePath); // Get file Length
+                _sendFileInfo = new MyFileInfo(File.OpenRead(_filePath), splitString[splitString.Length - 1], fileInfo.Length);
+                ClientAsked.isFirstTime = false;
+            }
+
+            ClientAsked.Buffer = new byte[ClientAsked.BufferSize];
+            ClientAsked.FileSize = _sendFileInfo.FileSize; // For progress bar value count
+
+            ClientAsked.BytesRead = _sendFileInfo.Stream.Read(ClientAsked.Buffer, 0, ClientAsked.BufferSize); // Read part of file save into buffer and return how much bytes be read this time into ClientAsked.BytesRead
+            
+            return ClientAsked;
+        }
     }
 }

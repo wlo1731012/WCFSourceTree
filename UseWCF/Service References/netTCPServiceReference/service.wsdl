@@ -37,29 +37,23 @@
   <wsdl:message name="IService1_GetFileList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFileListResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetPic_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPic" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetPic_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPicResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_ReceiveFile_InputMessage">
     <wsdl:part name="parameters" element="tns:ReceiveFile" />
   </wsdl:message>
   <wsdl:message name="IService1_ReceiveFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReceiveFileResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_OpenServiceDialog_InputMessage">
-    <wsdl:part name="parameters" element="tns:OpenServiceDialog" />
-  </wsdl:message>
-  <wsdl:message name="IService1_OpenServiceDialog_OutputMessage">
-    <wsdl:part name="parameters" element="tns:OpenServiceDialogResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_SendFile_InputMessage">
     <wsdl:part name="parameters" element="tns:SendFile" />
   </wsdl:message>
   <wsdl:message name="IService1_SendFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Test_InputMessage">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Test_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_SendMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
@@ -83,21 +77,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFileList" message="tns:IService1_GetFileList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFileListResponse" message="tns:IService1_GetFileList_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPic">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPic" message="tns:IService1_GetPic_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPicResponse" message="tns:IService1_GetPic_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ReceiveFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReceiveFile" message="tns:IService1_ReceiveFile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReceiveFileResponse" message="tns:IService1_ReceiveFile_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="OpenServiceDialog">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OpenServiceDialog" message="tns:IService1_OpenServiceDialog_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OpenServiceDialogResponse" message="tns:IService1_OpenServiceDialog_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendFile" message="tns:IService1_SendFile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendFileResponse" message="tns:IService1_SendFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Test">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Test" message="tns:IService1_Test_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TestResponse" message="tns:IService1_Test_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SendMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendMessage" message="tns:IService1_SendMessage_OutputCallbackMessage" />
@@ -140,15 +130,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPic">
-      <soap12:operation soapAction="http://tempuri.org/IService1/GetPic" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ReceiveFile">
       <soap12:operation soapAction="http://tempuri.org/IService1/ReceiveFile" style="document" />
       <wsdl:input>
@@ -158,8 +139,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="OpenServiceDialog">
-      <soap12:operation soapAction="http://tempuri.org/IService1/OpenServiceDialog" style="document" />
+    <wsdl:operation name="SendFile">
+      <soap12:operation soapAction="http://tempuri.org/IService1/SendFile" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -167,8 +148,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SendFile">
-      <soap12:operation soapAction="http://tempuri.org/IService1/SendFile" style="document" />
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://tempuri.org/IService1/Test" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

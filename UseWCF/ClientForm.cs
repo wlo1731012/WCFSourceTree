@@ -237,6 +237,95 @@ namespace WCFClient
         }
 
         public static DataSet serviceFileList = new DataSet();
+        //private void btnDownload_Click(object sender, EventArgs e)
+        //{
+        //    ServiceFile ClientAsked = new ServiceFile();
+        //    serviceFileList = service.GetFileList("D:\\Folder1"); // Set folder that make client READ
+
+        //    ServiceFileListForm serviceFileListForm = new ServiceFileListForm();
+        //    serviceFileListForm.ShowDialog();
+        //    string serviceFileName = serviceFileListForm.selectedFile;
+            
+        //    if (serviceFileName != "")
+        //    {
+        //        ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileName;
+
+        //        FolderBrowserDialog browsePath = new FolderBrowserDialog(); // Open a dialog make client select where to save file
+        //        browsePath.ShowDialog();
+
+        //        if (browsePath.SelectedPath != "")
+        //        {
+        //            string saveFilePath = browsePath.SelectedPath + "\\" + serviceFileName;
+        //            saveFilePath = CheckFilePath(saveFilePath);
+        //            double currentProgress = 0;
+        //            int tillCurrentBytesRead = 0; // Current sum of bytes been read
+        //            ClientAsked.BufferSize = 3000000;
+        //            ClientAsked.isFirstTime = true; // Make file open until read file over
+
+        //            fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
+        //            do
+        //            {
+        //                service.SendFile(ref ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
+        //                fileStream.Write(ClientAsked.Buffer, 0, ClientAsked.Buffer.Length); // Write  part of file information into File
+
+        //                tillCurrentBytesRead += ClientAsked.BytesRead;
+        //                currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
+        //                pgbReadFile.Value = Convert.ToInt32(currentProgress);
+        //            } while (currentProgress != 100);
+
+        //            fileStream.Close(); // Close File makes it rest in peace
+
+        //            rtbHistory.AppendText("- Download \"" + serviceFileName + "\" success -");
+        //            rtbHistory.AppendText("\n---------------------------------------------------------\n");
+        //        }
+        //    }
+
+        //    #region Test Time
+        //    //Stopwatch sw_total = new Stopwatch();
+        //    //ServiceFile ClientAsked = new ServiceFile();
+        //    //serviceFileList = service.GetFileList("D:\\Folder1"); // Set folder that make client READ
+
+        //    //ServiceFileListForm serviceFileListForm = new ServiceFileListForm();
+        //    //serviceFileListForm.ShowDialog();
+        //    //string serviceFileName = serviceFileListForm.selectedFile;
+
+        //    //if (serviceFileName != "")
+        //    //{
+        //    //    for (int i = 0; i < 3; i++)
+        //    //    {
+        //    //        sw_total.Reset();
+        //    //        sw_total.Start();
+        //    //        ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileName;
+
+        //    //        string saveFilePath = "D:\\FolderDownload" + "\\" + serviceFileName;
+        //    //        if (saveFilePath != "\\" + serviceFileName)
+        //    //        {
+        //    //            saveFilePath = CheckFilePath(saveFilePath);
+        //    //            double currentProgress = 0;
+        //    //            int tillCurrentBytesRead = 0; // Current sum of bytes been read
+        //    //            ClientAsked.BufferSize = 3000000;
+        //    //            ClientAsked.isFirstTime = true; // Make file open until read file over
+
+        //    //            fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
+        //    //            do
+        //    //            {
+        //    //                service.SendFile(ref ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
+        //    //                fileStream.Write(ClientAsked.Buffer, 0, ClientAsked.Buffer.Length); // Write  part of file information into File
+
+        //    //                tillCurrentBytesRead += ClientAsked.BytesRead;
+        //    //                currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
+        //    //                pgbReadFile.Value = Convert.ToInt32(currentProgress);
+        //    //            } while (currentProgress != 100);
+
+        //    //            fileStream.Close(); // Close File makes it rest in peace
+        //    //        }
+        //    //        sw_total.Stop();
+        //    //        rtbHistory.AppendText("-No. " + (i + 1).ToString() + " transport " + sw_total.Elapsed.TotalMilliseconds.ToString() + " ms-\n");
+        //    //    }
+        //    //    rtbHistory.AppendText("---------------------------------------------------------\n\n");
+        //    //}
+        //    #endregion
+        //}
         private void btnDownload_Click(object sender, EventArgs e)
         {
             ServiceFile ClientAsked = new ServiceFile();
@@ -259,13 +348,13 @@ namespace WCFClient
                     saveFilePath = CheckFilePath(saveFilePath);
                     double currentProgress = 0;
                     int tillCurrentBytesRead = 0; // Current sum of bytes been read
-                    ClientAsked.BufferSize = 3000000;
+                    ClientAsked.BufferSize = 300000;
                     ClientAsked.isFirstTime = true; // Make file open until read file over
 
                     fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
                     do
                     {
-                        service.SendFile(ref ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
+                        ClientAsked = service.Test(ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
                         fileStream.Write(ClientAsked.Buffer, 0, ClientAsked.Buffer.Length); // Write  part of file information into File
 
                         tillCurrentBytesRead += ClientAsked.BytesRead;
@@ -274,58 +363,12 @@ namespace WCFClient
                     } while (currentProgress != 100);
 
                     fileStream.Close(); // Close File makes it rest in peace
+
+                    rtbHistory.AppendText("- Download \"" + serviceFileName + "\" success -");
+                    rtbHistory.AppendText("\n---------------------------------------------------------\n");
                 }
-                rtbHistory.AppendText("- Download \"" + serviceFileName + "\" success -");
-                rtbHistory.AppendText("\n---------------------------------------------------------\n");
             }
-
-            #region Test Time
-            //Stopwatch sw_total = new Stopwatch();
-            //ServiceFile ClientAsked = new ServiceFile();
-            //serviceFileList = service.GetFileList("D:\\Folder1"); // Set folder that make client READ
-
-            //ServiceFileListForm serviceFileListForm = new ServiceFileListForm();
-            //serviceFileListForm.ShowDialog();
-            //string serviceFileName = serviceFileListForm.selectedFile;
-
-            //if (serviceFileName != "")
-            //{
-            //    for (int i = 0; i < 3; i++)
-            //    {
-            //        sw_total.Reset();
-            //        sw_total.Start();
-            //        ClientAsked.FilePath = "D:\\Folder1\\" + serviceFileName;
-
-            //        string saveFilePath = "D:\\FolderDownload" + "\\" + serviceFileName;
-            //        if (saveFilePath != "\\" + serviceFileName)
-            //        {
-            //            saveFilePath = CheckFilePath(saveFilePath);
-            //            double currentProgress = 0;
-            //            int tillCurrentBytesRead = 0; // Current sum of bytes been read
-            //            ClientAsked.BufferSize = 3000000;
-            //            ClientAsked.isFirstTime = true; // Make file open until read file over
-
-            //            fileStream = new FileStream(saveFilePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite); // Accoring to saveFilePath create a file
-            //            do
-            //            {
-            //                service.SendFile(ref ClientAsked); // Call Service1.cs function make ClientAsked.Buffer get part of file information
-            //                fileStream.Write(ClientAsked.Buffer, 0, ClientAsked.Buffer.Length); // Write  part of file information into File
-
-            //                tillCurrentBytesRead += ClientAsked.BytesRead;
-            //                currentProgress = (((double)tillCurrentBytesRead) / ClientAsked.FileSize) * 100;
-            //                pgbReadFile.Value = Convert.ToInt32(currentProgress);
-            //            } while (currentProgress != 100);
-
-            //            fileStream.Close(); // Close File makes it rest in peace
-            //        }
-            //        sw_total.Stop();
-            //        rtbHistory.AppendText("-No. " + (i + 1).ToString() + " transport " + sw_total.Elapsed.TotalMilliseconds.ToString() + " ms-\n");
-            //    }
-            //    rtbHistory.AppendText("\n---------------------------------------------------------\n");
-            //}
-            #endregion
         }
-
         private string CheckFilePath(string filePath)
         {
             string _filePath = filePath;
@@ -408,8 +451,6 @@ namespace WCFClient
 
         }
 
-        
-       
         #region CallBack function using
 
         #region Send Message Type
